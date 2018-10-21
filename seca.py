@@ -10,14 +10,14 @@ scr = pygame.display.set_mode((scrx, scry), FULLSCREEN, 32)
 
 clock = pygame.time.Clock()
 
-bolha = pygame.image.load("assets/bolha1.png").convert_alpha()
+bolha = pygame.image.load("assets/hantiseca/bolha1.png").convert_alpha()
 
 
 class Cenario(object):
     def __init__(self):
-        self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 500, 250, 500], "assets/boss1.png")
-        self.p1 = Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 130, 60, 120], 5, "assets/fabiano.png")
-        #self.fundo = pygame.image.load("assets/fundo.png").convert()
+        self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 500, 250, 500], "assets/hantiseca/boss1.png")
+        self.p1 = Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 130, 60, 120], 5, "assets/hantiseca/fabiano.png")
+        #self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
 
     def update(self):
         #scr.blit(self.fundo, (0, 0))
