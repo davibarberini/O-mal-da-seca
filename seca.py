@@ -166,21 +166,23 @@ cenario = Cenario()
 
 def bossselect():
     global bossselected
-    bossselected = "hantiseca"
+    bossselected = "Hantiseca"
 
     botlassoimgreal = pygame.image.load("assets/intro/botlassoicon.jpg").convert()
     botlassoimg = pygame.transform.scale(botlassoimgreal, (140, 140))
+    hantisecaimgreal = pygame.image.load("assets/intro/hantisecaicon.jpg").convert()
+    hantisecaimg = pygame.transform.scale(hantisecaimgreal, (140, 140))
+    lehwaimgreal = pygame.image.load("assets/intro/lehwaicon.png").convert_alpha()
+    lehwaimg = pygame.transform.scale(lehwaimgreal, (140, 140))
     arial = pygame.font.SysFont("Arial", 64, True, False)
     hantiseca = {"texto": "Hantiseca", "x": 50, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) ,"mcolide": False}
     lehwa = {"texto": "Lehwa", "x": 400, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
     botlasso = {"texto": "Botlasso", "x": 700, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
     voltar = {"texto": "Voltar", "x": 0, "y": 600, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
-    hantisecarender = arial.render(hantiseca["texto"], True, hantiseca["cor"])
-    lehwarender = arial.render(lehwa["texto"], True, lehwa["cor"])
     voltarrender = arial.render(voltar["texto"], True, voltar["cor"])
-    hantisecarect = hantisecarender.get_rect()
+    hantisecarect = hantisecaimg.get_rect()
     botlassorect = botlassoimg.get_rect()
-    lehwarect = lehwarender.get_rect()
+    lehwarect = lehwaimg.get_rect()
     voltarrect = voltarrender.get_rect()
     run = True
     while run:
@@ -196,11 +198,11 @@ def bossselect():
             elif e.type == MOUSEBUTTONDOWN:
                 if e.button == 1:
                     if hantiseca["mcolide"] == True:
-                        bossselected = "hantiseca"
+                        bossselected = "Hantiseca"
                     elif lehwa["mcolide"] == True:
-                        bossselected = "lehwa"
+                        bossselected = "Lehwa"
                     elif botlasso["mcolide"] == True:
-                        bossselected = "botlasso"
+                        bossselected = "Botlasso"
                     elif voltar["mcolide"] == True:
                         run = False
         mouse = pygame.mouse.get_pos()
@@ -209,31 +211,33 @@ def bossselect():
         selected = arial.render("Selecionado: " + bossselected, True, (255, 255, 0))
         scr.blit(selected, (200, 300))
 
-        pygame.draw.rect(scr, hantiseca["correct"], [hantiseca["x"], hantiseca["y"], hantisecarect.w, hantisecarect.h], 0)
-        pygame.draw.rect(scr, lehwa["correct"], [lehwa["x"], lehwa["y"], lehwarect.w, lehwarect.h], 0)
+        pygame.draw.rect(scr, hantiseca["correct"], [hantiseca["x"] - 5, hantiseca["y"] - 5, hantisecarect.w + 10, hantisecarect.h + 10], 0)
+        pygame.draw.rect(scr, lehwa["correct"], [lehwa["x"] - 5, lehwa["y"] - 5, lehwarect.w + 10, lehwarect.h + 10], 0)
         pygame.draw.rect(scr, botlasso["correct"], [botlasso["x"] - 5, botlasso["y"] - 5, botlassorect.w + 10, botlassorect.h + 10], 0)
         pygame.draw.rect(scr, voltar["correct"], [voltar["x"], voltar["y"], voltarrect.w, voltarrect.h], 0)
-        scr.blit(hantisecarender, (hantiseca["x"], hantiseca["y"]))
-        scr.blit(lehwarender, (lehwa["x"], lehwa["y"]))
+        scr.blit(hantisecaimg, (hantiseca["x"], hantiseca["y"]))
+        scr.blit(lehwaimg, (lehwa["x"], lehwa["y"]))
         scr.blit(botlassoimg, (botlasso["x"], botlasso["y"]))
         scr.blit(voltarrender, (voltar["x"], voltar["y"]))
 
-        if hantiseca["x"] + hantisecarect.w > mouse[0] > hantiseca["x"] and\
-        hantiseca["y"] + hantisecarect.h > mouse[1] > hantiseca["y"]:
+        if hantiseca["x"] - 5 + hantisecarect.w + 10 > mouse[0] > hantiseca["x"] - 5 and\
+        hantiseca["y"] - 5 + hantisecarect.h + 10 > mouse[1] > hantiseca["y"] - 5:
             hantiseca["correct"] = (255, 255, 255)
             hantiseca["mcolide"] = True
         else:
             hantiseca["correct"] = (255, 255, 0)
             hantiseca["mcolide"] = False
 
-        if lehwa["x"] + lehwarect.w > mouse[0] > lehwa["x"] and lehwa["y"] + lehwarect.h > mouse[1] > lehwa["y"]:
+        if lehwa["x"] - 5 + lehwarect.w + 10 > mouse[0] > lehwa["x"] - 5 and\
+                lehwa["y"] - 5 + lehwarect.h + 10 > mouse[1] > lehwa["y"] - 5:
             lehwa["correct"] = (255, 255, 255)
             lehwa["mcolide"] = True
         else:
             lehwa["correct"] = (255, 255, 0)
             lehwa["mcolide"] = False
 
-        if botlasso["x"] + botlassorect.w > mouse[0] > botlasso["x"] and botlasso["y"] + botlassorect.h > mouse[1] > botlasso["y"]:
+        if botlasso["x"] - 5 + botlassorect.w + 10 > mouse[0] > botlasso["x"] - 5 and\
+                botlasso["y"] - 5 + botlassorect.h + 10 > mouse[1] > botlasso["y"] - 5:
             botlasso["correct"] = (255, 255, 255)
             botlasso["mcolide"] = True
         else:
