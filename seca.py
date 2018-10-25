@@ -168,22 +168,24 @@ def bossselect():
     global bossselected
     bossselected = "hantiseca"
 
+    botlassoimgreal = pygame.image.load("assets/intro/botlassoicon.jpg").convert()
+    botlassoimg = pygame.transform.scale(botlassoimgreal, (140, 140))
     arial = pygame.font.SysFont("Arial", 64, True, False)
     hantiseca = {"texto": "Hantiseca", "x": 50, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) ,"mcolide": False}
     lehwa = {"texto": "Lehwa", "x": 400, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
-    botlasso = {"texto": "Botlasso", "x": 600, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
+    botlasso = {"texto": "Botlasso", "x": 700, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
     voltar = {"texto": "Voltar", "x": 0, "y": 600, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
     hantisecarender = arial.render(hantiseca["texto"], True, hantiseca["cor"])
     lehwarender = arial.render(lehwa["texto"], True, lehwa["cor"])
-    botlassorender = arial.render(botlasso["texto"], True, botlasso["cor"])
     voltarrender = arial.render(voltar["texto"], True, voltar["cor"])
     hantisecarect = hantisecarender.get_rect()
+    botlassorect = botlassoimg.get_rect()
     lehwarect = lehwarender.get_rect()
-    botlassorect = botlassorender.get_rect()
     voltarrect = voltarrender.get_rect()
     run = True
     while run:
         scr.fill((0, 0, 0))
+        fundo = pygame.image.load("assets/intro/" + bossselected + "fundo.png").convert()
 
         for e in pygame.event.get():
             if e.type == QUIT:
@@ -203,16 +205,17 @@ def bossselect():
                         run = False
         mouse = pygame.mouse.get_pos()
 
+        scr.blit(fundo, (0, 0))
         selected = arial.render("Selecionado: " + bossselected, True, (255, 255, 0))
-        scr.blit(selected, (300, 300))
+        scr.blit(selected, (200, 300))
 
         pygame.draw.rect(scr, hantiseca["correct"], [hantiseca["x"], hantiseca["y"], hantisecarect.w, hantisecarect.h], 0)
         pygame.draw.rect(scr, lehwa["correct"], [lehwa["x"], lehwa["y"], lehwarect.w, lehwarect.h], 0)
-        pygame.draw.rect(scr, botlasso["correct"], [botlasso["x"], botlasso["y"], botlassorect.w, botlassorect.h], 0)
+        pygame.draw.rect(scr, botlasso["correct"], [botlasso["x"] - 5, botlasso["y"] - 5, botlassorect.w + 10, botlassorect.h + 10], 0)
         pygame.draw.rect(scr, voltar["correct"], [voltar["x"], voltar["y"], voltarrect.w, voltarrect.h], 0)
         scr.blit(hantisecarender, (hantiseca["x"], hantiseca["y"]))
         scr.blit(lehwarender, (lehwa["x"], lehwa["y"]))
-        scr.blit(botlassorender, (botlasso["x"], botlasso["y"]))
+        scr.blit(botlassoimg, (botlasso["x"], botlasso["y"]))
         scr.blit(voltarrender, (voltar["x"], voltar["y"]))
 
         if hantiseca["x"] + hantisecarect.w > mouse[0] > hantiseca["x"] and\
