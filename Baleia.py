@@ -15,7 +15,7 @@ fontevitoria=pygame.font.SysFont(fonte, 70, bold=True, italic=False)
 
 class Cenario(object):
     def __init__(self):
-        self.cenario=pygame.image.load("./assets/baleia/imagens/deserto.jpg")
+        self.cenario=pygame.image.load("./assets/baleia/imagens/fundo.jpg")
         self.cenario=pygame.transform.scale(self.cenario,(1024,768))
         self.ba = Enemy(screen, (0,255,0), [780, 450, 270, 270], 0)
         self.velx = 6
@@ -138,7 +138,7 @@ class Enemy(object):
                 self.golpe="investida"
                 self.invencibilidade=True
                 if (self.rect[0]>=-350):
-                    self.velx-=3
+                    self.velx-=5.5
                     self.rect[0]+=self.velx
 
 
@@ -154,7 +154,7 @@ class Enemy(object):
                 self.golpe="disparo"
                 self.invencibilidade=False
                 if(self.disparo>=-0):
-                    self.disparo-=6
+                    self.disparo-=10
                     self.screen.blit(self.disparoimagem, (self.disparo, self.rect[1]+100))
                 else:
                     self.disparo=self.rect[0]+75
@@ -172,7 +172,7 @@ class Enemy(object):
 
                 x=self.rect[0]
 
-                self.preasvelx-=5
+                self.preasvelx-=7
                 for i in range(7):
                     self.preas[i]=(i*360)+self.preasvelx
                     if(self.preas[i]>=-2000):
@@ -256,13 +256,13 @@ class Enemy(object):
                 if(self.disparos<=3):
                     if(self.disparos%2==0):
                         if(self.disparo>=-0):
-                            self.disparo-=8
+                            self.disparo-=12
                             self.screen.blit(self.disparoimagem2, (self.disparo, self.rect[1]+100))
                         else:
                             self.disparos+=1
                     elif(self.disparos%2!=0):
                         if(self.disparo<=1024):
-                            self.disparo+=8
+                            self.disparo+=12
                             self.screen.blit(self.disparoimagem2, (self.disparo, self.rect[1]+100))
                         else:
                             self.disparos+=1
@@ -301,7 +301,7 @@ def gameloop():
     sompausado = 0
     #cenario.musicaplay = pygame.mixer.music.play(5)
     while rodar:
-        clock.tick(120)
+        clock.tick(60)
         cenario.atualizarcenario()
 
         #if cenario.musicapausada == False:
