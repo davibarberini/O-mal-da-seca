@@ -1,10 +1,11 @@
 import pygame
-from pygame.locals import QUIT, KEYDOWN, KEYUP, K_LEFT, K_RIGHT, K_UP, K_DOWN, FULLSCREEN, K_f, K_r,K_z,K_x,K_c,K_j,K_SPACE,Rect
+import fabiano as ply
+from pygame.locals import QUIT, KEYDOWN, KEYUP, K_LEFT, K_RIGHT, K_UP, K_DOWN, FULLSCREEN, K_f, K_r,K_z,K_x,K_c,K_j,K_SPACE,Rect, K_ESCAPE
 from random import randint
 
 pygame.init()
 width=1024
-height=720
+height=768
 screen=pygame.display.set_mode((width,height))
 clock=pygame.time.Clock()
 pygame.font.init()
@@ -15,28 +16,28 @@ fontevitoria=pygame.font.SysFont(fonte, 70, bold=True, italic=False)
 class Cenario(object):
     def __init__(self):
         self.cenario=pygame.image.load("./assets/baleia/imagens/deserto.jpg")
-        self.cenario=pygame.transform.scale(self.cenario,(1024,720))
+        self.cenario=pygame.transform.scale(self.cenario,(1024,768))
         self.ba = Enemy(screen, (0,255,0), [780, 450, 270, 270], 0)
         self.velx = 6
         self.count = 0
         self.rect=Rect((0,598),(800,1))
 
-        self.musica=pygame.mixer.music.load("./assets/baleia/musicas/golden time lover.mp3")
-        self.musicaplay=pygame.mixer.music.play(5)
-        self.musicatoca=True
-        self.musicapos=0
-        self.musicapausada=False
-
+        #self.musica=pygame.mixer.music.load("./assets/baleia/musicas/golden time lover.mp3")
+        #self.musicatoca=True
+        #self.musicapos=0
+        #self.musicapausada=False
+        self.p1 = ply.Player(screen, (0, 0, 255), [width - (width - 50), height - 130, 60, 120], 5, "assets/hantiseca/fabiano.png")
     def atualizarcenario(self):
         screen.blit(self.cenario,(0,0))
         'self.pl.draw()'
         self.ba.draw()
         'self.pl.update()'
         self.ba.update()
-        if self.musicatoca:
-            self.musicaplay=pygame.mixer.music.play(5)
-            self.musicatoca=False
-
+        #if self.musicatoca:
+         #   self.musicaplay=pygame.mixer.music.play(5)
+          #  self.musicatoca=False
+        self.p1.update()
+        self.p1.draw()
 
 class Enemy(object):
     def __init__(self,screen,cor,rect,vely):
@@ -213,9 +214,6 @@ class Enemy(object):
                         print(self.rect[1])
 
 
-
-
-
                 elif((self.pulo or self.cairdevolta) and self.rect[1]<=450 ):
                     self.vely+=2
                     if(self.rect[0]>=0):
@@ -226,7 +224,6 @@ class Enemy(object):
                                 self.velx+=2
                     self.rect[1]+=self.vely
                     self.rect[0]+=self.velx
-
 
 
                 elif(self.esperapulo<=150 and self.pulodevolta==False):
@@ -240,14 +237,6 @@ class Enemy(object):
                     self.esperapulo=0
 
 
-
-
-
-
-
-
-
-
                 else:
                     self.invencibilidade=False
                     self.esperapulo=0
@@ -258,14 +247,6 @@ class Enemy(object):
                     self.rect[0]=730
                     self.golpe=""
                     self.ataques+=1
-
-
-
-
-
-
-
-
 
 
             if(self.ataques>=5 and self.golpe=="" or self.golpe=="disparos"):
@@ -306,70 +287,63 @@ class Enemy(object):
                  self.tempo=0 '''
 
 
+__init__ = "__main__"
+cenario = Cenario()
+def gameloop():
+    global esperafalas, musica, sompausado, espera, acertado, falas
+
+    rodar = True
+    espera = 0
+    acertado = False
+    falas = False
+    esperafalas = 0
+    musica = False
+    sompausado = 0
+    #cenario.musicaplay = pygame.mixer.music.play(5)
+    while rodar:
+        clock.tick(120)
+        cenario.atualizarcenario()
+
+        #if cenario.musicapausada == False:
+            #cenario.musicapos += 1
+
+        for e in pygame.event.get():
+            if e.type == QUIT:
+                exit()
+            elif e.type == KEYDOWN:
+                if e.key == K_f:
+                    exit()
+                elif e.key == K_ESCAPE:
+                    from main import gameintro
+                    gameintro()
+                ply.ekeydown(e, cenario)
+            elif e.type == KEYUP:
+                ply.ekeyup(e, cenario)
+        cenario.ba.ataque()
+        pygame.display.update()
+    '''colisão
+        if(cenario.pl.rect.colliderect(cenario.rect)):
+            cenario.pl.pulo=0
+
+        if cenario.ba.rect.colliderect(cenario.pl.rect) and espera==0 and cenario.ba.invencibilidade:
+
+            cenario.pl.vida-=1
+            acertado=True
 
 
+        elif cenario.ba.golpe=="preas":
+            for i in range(7):
+                if cenario.ba.preasrect[i].colliderect(cenario.pl.rect) and espera==0:
+                    cenario.pl.vida-=1
+                    acertado=True
 
+        elif cenario.ba.disparorect.colliderect(cenario.pl.rect) and cenario.ba.atacar and espera==0:
 
+            cenario.pl.vida-=1
+            acertado=True
 
-
-
-
-
-
-
-
-__init__="__main__"
-
-rodar=True
-cenario=Cenario()
-clock.tick(120)
-espera=0
-acertado=False
-falas=False
-esperafalas=0
-musica=True
-sompausado=0
-
-
-while rodar:
-    cenario.atualizarcenario()
-
-    if cenario.musicapausada==False:
-        cenario.musicapos+=1
-
-    for e in pygame.event.get():
-        if e.type == QUIT:
-            exit()
-
-    cenario.ba.ataque()
-    pygame.display.update()
-'''colisão
-    if(cenario.pl.rect.colliderect(cenario.rect)):
-        cenario.pl.pulo=0
-
-    if cenario.ba.rect.colliderect(cenario.pl.rect) and espera==0 and cenario.ba.invencibilidade:
-
-        cenario.pl.vida-=1
-        acertado=True
-
-
-    elif cenario.ba.golpe=="preas":
-        for i in range(7):
-            if cenario.ba.preasrect[i].colliderect(cenario.pl.rect) and espera==0:
-                cenario.pl.vida-=1
-                acertado=True
-
-    elif cenario.ba.disparorect.colliderect(cenario.pl.rect) and cenario.ba.atacar and espera==0:
-
-        cenario.pl.vida-=1
-        acertado=True
-
-    if acertado:
-        espera+=1
-        if(espera>=150):
-            espera=0
-            acertado=False '''
-
-
-
-
+        if acertado:
+            espera+=1
+            if(espera>=150):
+                espera=0
+                acertado=False '''
