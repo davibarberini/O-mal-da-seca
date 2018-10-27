@@ -128,13 +128,16 @@ def gameintro():
             elif e.type == MOUSEBUTTONDOWN:
                 if e.button == 1:
                     if start["mcolide"] == True:
-                        intro = False
-                        if bossselected == "Hantiseca":
-                            hanti.gameloop()
-                        elif bossselected == "Lehwa":
-                            lehwa.gameloop()
-                        elif bossselected == "Botlasso":
-                            botlasso.gameloop()
+                        try:
+                            if bossselected == "Hantiseca":
+                                hanti.gameloop()
+                            elif bossselected == "Lehwa":
+                                lehwa.gameloop()
+                            elif bossselected == "Botlasso":
+                                botlasso.gameloop()
+                            intro = False
+                        except NameError:
+                            None
 
                     elif boss["mcolide"] == True:
                         bossselect()
