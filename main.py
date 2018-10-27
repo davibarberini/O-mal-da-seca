@@ -1,6 +1,6 @@
 import pygame
 import hantiseca as hanti
-import baleia as lehwa
+import Baleia as lehwa
 import botlel as botlasso
 from pygame.locals import FULLSCREEN, QUIT, KEYDOWN, K_p, K_f, MOUSEBUTTONDOWN
 
