@@ -9,7 +9,7 @@ pygame.init()
 scrx = 1024
 scry = 768
 
-scr = pygame.display.set_mode((scrx, scry), FULLSCREEN, 32)
+scr = pygame.display.set_mode((scrx, scry), 0, 32)
 
 clock = pygame.time.Clock()
 

@@ -53,6 +53,7 @@ class Boss(object):
         self.onda()
         self.bolhas((cenario.p1.rect[0], cenario.p1.rect[1]))
         self.count += 1
+
     def geiser(self):
         if self.skillgs.alive:
             self.skillgs.draw()
@@ -163,5 +164,6 @@ def gameloop():
                 ply.ekeydown(e, cenario)
             elif e.type == KEYUP:
                 ply.ekeyup(e, cenario)
+
         cenario.update()
         pygame.display.update()
