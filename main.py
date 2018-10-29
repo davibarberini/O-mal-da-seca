@@ -9,7 +9,7 @@ pygame.init()
 scrx = 1024
 scry = 768
 
-scr = pygame.display.set_mode((scrx, scry), 0, 32)
+scr = pygame.display.set_mode((scrx, scry), FULLSCREEN, 32)
 
 clock = pygame.time.Clock()
 
@@ -55,6 +55,7 @@ def bossselect():
                         bossselected = "Botlasso"
                     elif voltar["mcolide"] == True:
                         run = False
+
         mouse = pygame.mouse.get_pos()
 
         scr.blit(fundo, (0, 0))
@@ -137,7 +138,7 @@ def gameintro():
                                 botlasso.gameloop()
                             intro = False
                         except NameError:
-                            None
+                            print("Não selecionou o boss")
 
                     elif boss["mcolide"] == True:
                         bossselect()

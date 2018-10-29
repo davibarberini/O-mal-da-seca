@@ -15,7 +15,7 @@ fontevitoria=pygame.font.SysFont(fonte, 70, bold=True, italic=False)
 
 class Cenario(object):
     def __init__(self):
-        self.cenario=pygame.image.load("./assets/baleia/imagens/fundo.jpg")
+        self.cenario=pygame.image.load("./assets/baleia/imagens/fundo.jpg").convert()
         self.cenario=pygame.transform.scale(self.cenario,(1024,768))
         self.ba = Enemy(screen, (0,255,0), [780, 450, 270, 270], 0)
         self.velx = 6
@@ -46,7 +46,7 @@ class Enemy(object):
         self.rect=Rect(rect)
         self.x=500
         self.y=400
-        self.imagem=pygame.image.load("./assets/baleia/imagens/cachorro.png")
+        self.imagem=pygame.image.load("./assets/baleia/imagens/cachorro.png").convert_alpha()
         self.imagem=pygame.transform.scale(self.imagem,(rect[2],rect[3]))
         self.velx=0
         self.vely=vely
@@ -65,8 +65,8 @@ class Enemy(object):
         self.disparos=0
         self.disparoy=self.rect[1]+100
         self.disparorect=Rect(self.disparo,rect[1]+100,20,20)
-        self.disparoimagem=pygame.image.load("./assets/baleia/imagens/bola.png")
-        self.disparoimagem2=pygame.image.load("./assets/baleia/imagens/bola2.png")
+        self.disparoimagem=pygame.image.load("./assets/baleia/imagens/bola.png").convert_alpha()
+        self.disparoimagem2=pygame.image.load("./assets/baleia/imagens/bola2.png").convert_alpha()
 
 
 
@@ -76,7 +76,7 @@ class Enemy(object):
 
         self.preas=list(range(20))
         self.preasvelx=0
-        self.preasimg=pygame.image.load("./assets/baleia/imagens/prea.jpg")
+        self.preasimg=pygame.image.load("./assets/baleia/imagens/prea.jpg").convert()
         self.preasimg=pygame.transform.scale(self.preasimg,(120,120))
         self.vezes=0
         self.preasrect=list(range(20))
@@ -301,7 +301,7 @@ def gameloop():
     sompausado = 0
     #cenario.musicaplay = pygame.mixer.music.play(5)
     while rodar:
-        clock.tick(60)
+        clock.tick(120)
         cenario.atualizarcenario()
 
         #if cenario.musicapausada == False:

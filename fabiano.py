@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import K_UP, K_RIGHT, K_LEFT, K_r, K_x, K_z
+from pygame.locals import K_UP, K_RIGHT, K_LEFT, K_r, K_x, K_z, K_c
 
 
 class Player(object):
@@ -16,6 +16,7 @@ class Player(object):
         self.count = 0
         self.atacando = False
         self.tiro = Retangulo(scr, (0, 0, 255), [-500, 50, 20, 10])
+        self.vida = 100
 
     def draw(self):
         if self.alive:
@@ -29,12 +30,12 @@ class Player(object):
             if self.rect[1] + self.vely > 650:
                 self.pulo = 0
                 self.vely = 0
-            if self.rect[0] + self.velx > 500:
+            if self.rect[0] + self.velx > 1024 - self.rect[2]:
                 self.velx = 0
             if self.rect[0] + self.velx < 0:
                 self.velx = 0
             self.rect[1] += self.vely
-            self.vely += 0.15
+            self.vely += 0.20
             self.rect[0] += self.velx
             self.attack()
 
@@ -52,6 +53,16 @@ class Player(object):
             self.tiro.rect[0] = self.rect[0]
             self.tiro.rect[1] = self.rect[1]
             self.tiro.alive = True
+
+    def dash(self):
+        if self.velx > 0:
+            self.rect[0] += 100
+            if self.rect[0] + self.rect[2] > 1024:
+                self.rect[0] = 1024 - self.rect[2]
+        elif self.velx < 0:
+            self.rect[0] += -100
+            if self.rect[0] < 0:
+                self.rect[0] = 0
 
 
 class Retangulo(object):
@@ -77,9 +88,9 @@ class Retangulo(object):
                 self.count = 0
 
 def ekeydown (e, cenario):
-    if e.key == K_UP and cenario.p1.pulo <= 2:
+    if e.key == K_UP and cenario.p1.pulo <= 1:
         cenario.p1.pulo += 1
-        cenario.p1.vely = -6
+        cenario.p1.vely = -9
     if e.key == K_RIGHT:
         cenario.p1.velx = 6
     elif e.key == K_LEFT:
@@ -90,6 +101,8 @@ def ekeydown (e, cenario):
         cenario.p1.shoot()
     elif e.key == K_r:
         cenario.p1.vida = 100
+    elif e.key == K_c:
+        cenario.p1.dash()
 
 def ekeyup(e, cenario):
     if e.key == K_RIGHT and cenario.p1.velx > 0:
