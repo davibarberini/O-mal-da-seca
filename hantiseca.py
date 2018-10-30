@@ -24,6 +24,7 @@ class Cenario(object):
     def update(self):
         #scr.blit(self.fundo, (0, 0))
         self.draw()
+        self.collisions()
         self.boss.update()
         self.p1.update()
         if self.count % 300 == 0:
@@ -43,9 +44,41 @@ class Cenario(object):
             elif self.skill == 4:
                 self.boss.tiros = []
                 self.skill += 1
-            if self.skill > 4:
+            elif self.skill == 5:
+                self.vulnerable = True
+                if self.count % 400 == 0:
+                    self.skill += 1
+                    self.vulnerable = False
+            if self.skill > 5:
                 self.skill = 1
+                self.vulnerable = False
+
         self.count += 1
+
+
+    def collisions(self):
+        if self.boss.skillgs.alive:
+            if self.p1.vulnerable:
+                skillRect = pygame.Rect(self.boss.skillgs.rect)
+                p1Rect = pygame.Rect(self.p1.rect)
+                if p1Rect.colliderect(skillRect):
+                    self.p1.vulnerable = False
+                    self.p1.vida -= 10
+        elif self.boss.skillsoco.alive:
+            if self.p1.vulnerable:
+                skillRect = pygame.Rect(self.boss.skillsoco.rect)
+                p1Rect = pygame.Rect(self.p1.rect)
+                if p1Rect.colliderect(skillRect):
+                    self.p1.vulnerable = False
+                    self.p1.vida -= 10
+        elif self.boss.skillonda.alive:
+            if self.p1.vulnerable:
+                skillRect = pygame.Rect(self.boss.skillonda.rect)
+                p1Rect = pygame.Rect(self.p1.rect)
+                if p1Rect.colliderect(skillRect):
+                    self.p1.vulnerable = False
+                    self.p1.vida -= 10
+        self.p1.damage(self.boss)
 
     def draw(self):
         self.boss.draw()
@@ -58,6 +91,8 @@ class Boss(object):
         self.color = color
         self.rect = rect
         self.width = 0
+        self.vida = 100
+        self.vulnerable = False
         self.image = pygame.image.load(image).convert_alpha()
         self.skillgs = Retangulo(self.scr, (50, 50, 255), [4000, scry, 100, 0])
         self.skillsoco = Retangulo(self.scr, (50, 50, 255), [4000, 0, 0, 100])
@@ -79,38 +114,44 @@ class Boss(object):
     def geiser(self):
         if self.skillgs.alive:
             self.skillgs.draw()
-            self.skillgs.rect[3] += -10
-        if self.skillgs.rect[3] < -500:
+            self.skillgs.rect[3] += 10
+            self.skillgs.rect[1] += -10
+        if self.skillgs.rect[1] < 200:
             self.skillgs.alive = False
             self.skillgs.rect[3] = 0
+            self.skillgs.rect[1] = scry
 
     def soco(self):
         if self.skillsoco.alive:
             self.skillsoco.draw()
-            if not self.skillsoco.rect[2] < -500:
-                self.skillsoco.rect[2] += -10
+            if not self.skillsoco.rect[0] < 200:
+                self.skillsoco.rect[2] += 10
+                self.skillsoco.rect[0] += -10
             self.skillsoco.count += 1
             if self.skillsoco.count > 80:
                 self.skillsoco.alive = False
                 self.skillsoco.count = 0
                 self.skillsoco.rect[2] = 0
+                self.skillsoco.rect[0] = 4000
 
     def onda(self):
         if self.skillonda.alive:
             self.skillonda.draw()
-            self.skillonda.rect[2] += -5
+            self.skillonda.rect[2] += 5
+            self.skillonda.rect[0] += -5
             self.skillonda.rect[1] += 4
-            if self.skillonda.rect[2] < -1200:
+            if self.skillonda.rect[0] < -200:
                 self.skillonda.alive = False
                 self.skillonda.rect[2] = 0
                 self.skillonda.rect[1] = 100
+                self.skillonda.rect[0] = 4000
 
     def bolhas(self, posp):
         (xp, yp) = posp
         cad = int(self.rect[0] - xp)
         cop = int(yp - self.rect[1])
         h = ((cad ** 2) + (cop ** 2)) ** 0.5
-        #pygame.draw.line(self.scr, (255, 255, 0), (750, 300), (750 - cad, 300 + cop), 5)
+        pygame.draw.line(self.scr, (255, 255, 0), (750, 300), (750 - cad, 300 + cop), 5)
         if len(self.tiros) < 10 and self.count % 20 == 0:
             self.tiros.append(Circulo(scr, (50, 50, 255), (750, 300), 20))
 
