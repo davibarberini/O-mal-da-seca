@@ -68,25 +68,9 @@ class Player(object):
             if self.rect[0] < 0:
                 self.rect[0] = 0
 
-    def damage(self, boss):
+    def damage(self):
         if not self.vulnerable:
             self.color = (255, 255, 0)
-            if boss.skillgs.alive:
-                if self.rect[1] + self.rect[3] > boss.skillgs.rect[1]:
-                    self.vely = -6
-                if self.rect[1] < 0:
-                    self.rect[1] = 0
-            elif boss.skillsoco.alive:
-                if self.rect[0] + self.rect[2] > boss.skillsoco.rect[0]:
-                    self.rect[0] = boss.skillsoco.rect[0] - self.rect[2]
-                if self.rect[0] < 0:
-                    self.rect[0] = 0
-            elif boss.skillonda.alive:
-                if self.rect[0] > boss.skillonda.rect[0]:
-                    self.rect[0] = boss.skillonda.rect[0]
-                    self.slow = 2
-                if self.rect[0] < 0:
-                    self.rect[0] = 0
             if self.countvul > 80:
                 self.vulnerable = True
                 self.countvul = 0

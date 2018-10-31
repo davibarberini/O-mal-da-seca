@@ -27,58 +27,106 @@ class Cenario(object):
         self.collisions()
         self.boss.update()
         self.p1.update()
-        if self.count % 300 == 0:
+        if self.count > 200:
             if self.skill == 1:
                 self.boss.skillgs.rect[0] = self.p1.rect[0]
                 self.boss.skillgs.alive = True
                 self.skill += 1
+                self.count = 0
             elif self.skill == 2:
                 self.boss.skillsoco.rect[0] = self.boss.rect[0]
                 self.boss.skillsoco.rect[1] = self.p1.rect[1]
                 self.boss.skillsoco.alive = True
                 self.skill += 1
+                self.count = 0
             elif self.skill == 3:
                 self.boss.skillonda.rect[0] = self.boss.rect[0]
                 self.boss.skillonda.alive = True
                 self.skill += 1
+                self.count = 0
             elif self.skill == 4:
                 self.boss.tiros = []
                 self.skill += 1
+                self.count = 0
             elif self.skill == 5:
-                self.vulnerable = True
-                if self.count % 400 == 0:
+                print("chegou aqui")
+                self.boss.vulnerable = True
+                print(self.count)
+                if self.count > 600:
                     self.skill += 1
-                    self.vulnerable = False
+                    self.boss.vulnerable = False
+                    self.count = 0
             if self.skill > 5:
                 self.skill = 1
-                self.vulnerable = False
+                self.boss.vulnerable = False
 
         self.count += 1
 
 
     def collisions(self):
+        p1Rect = pygame.Rect(self.p1.rect)
         if self.boss.skillgs.alive:
+            skillRect = pygame.Rect(self.boss.skillgs.rect)
             if self.p1.vulnerable:
-                skillRect = pygame.Rect(self.boss.skillgs.rect)
-                p1Rect = pygame.Rect(self.p1.rect)
                 if p1Rect.colliderect(skillRect):
                     self.p1.vulnerable = False
                     self.p1.vida -= 10
+            if p1Rect.colliderect(skillRect):
+                if self.p1.rect[1] + self.p1.rect[3] > self.boss.skillgs.rect[1]:
+                    self.p1.vely = -6
+            if self.p1.rect[1] < 0:
+                self.p1.rect[1] = 0
         elif self.boss.skillsoco.alive:
+            skillRect = pygame.Rect(self.boss.skillsoco.rect)
             if self.p1.vulnerable:
-                skillRect = pygame.Rect(self.boss.skillsoco.rect)
-                p1Rect = pygame.Rect(self.p1.rect)
                 if p1Rect.colliderect(skillRect):
                     self.p1.vulnerable = False
                     self.p1.vida -= 10
+            if p1Rect.colliderect(skillRect):
+                if self.p1.rect[0] + self.p1.rect[2] > self.boss.skillsoco.rect[0]:
+                    self.p1.rect[0] = self.boss.skillsoco.rect[0] - self.p1.rect[2]
+            if self.p1.rect[0] < 0:
+                self.p1.rect[0] = 0
         elif self.boss.skillonda.alive:
+            skillRect = pygame.Rect(self.boss.skillonda.rect)
             if self.p1.vulnerable:
-                skillRect = pygame.Rect(self.boss.skillonda.rect)
-                p1Rect = pygame.Rect(self.p1.rect)
                 if p1Rect.colliderect(skillRect):
                     self.p1.vulnerable = False
                     self.p1.vida -= 10
-        self.p1.damage(self.boss)
+            if p1Rect.colliderect(skillRect):
+                if self.p1.rect[0] > self.boss.skillonda.rect[0] and self.p1.rect[1] >= self.boss.skillonda.rect[1]:
+                    self.p1.rect[0] = self.boss.skillonda.rect[0]
+                    self.slow = 2
+            if self.p1.rect[0] < 0:
+                self.p1.rect[0] = 0
+        elif len(self.boss.tiros) > 0:
+            if self.p1.vulnerable:
+                for tiro in self.boss.tiros:
+                    (x, y) = tiro.pos
+                    tiroRect = pygame.Rect([x - 20, y - 20, 40, 40])
+                    if p1Rect.colliderect(tiroRect):
+                        self.p1.vulnerable = False
+                        self.p1.vida -= 10
+        if self.boss.vulnerable:
+            bossRect = pygame.Rect(self.boss.rect)
+            if self.p1.atacando:
+                if p1Rect.colliderect(bossRect):
+                    self.boss.vida -= 10
+                    self.boss.vulnerable = False
+                    self.skill += 1
+                    self.count = 0
+            if self.p1.tiro.alive:
+                p1tiroRect = pygame.Rect(self.p1.tiro.rect)
+                if p1tiroRect.colliderect(bossRect):
+                    self.boss.vida -= 10
+                    self.boss.vulnerable = False
+                    self.skill += 1
+                    self.count = 0
+        self.p1.damage()
+        if self.boss.vulnerable:
+            self.boss.color = (255, 255, 0)
+        else:
+            self.boss.color = (255, 0, 0)
 
     def draw(self):
         self.boss.draw()
@@ -101,8 +149,9 @@ class Boss(object):
         self.count = 0
 
     def draw(self):
-        #pygame.draw.rect(self.scr, self.color, self.rect, self.width)
+        pygame.draw.rect(self.scr, self.color, self.rect, self.width)
         self.scr.blit(self.image, (self.rect[0], self.rect[1]))
+        pygame.draw.rect(self.scr, (0, 255, 0), [600, 0, self.vida, 50])
 
     def update(self):
         self.geiser()
@@ -151,7 +200,7 @@ class Boss(object):
         cad = int(self.rect[0] - xp)
         cop = int(yp - self.rect[1])
         h = ((cad ** 2) + (cop ** 2)) ** 0.5
-        pygame.draw.line(self.scr, (255, 255, 0), (750, 300), (750 - cad, 300 + cop), 5)
+        #pygame.draw.line(self.scr, (255, 255, 0), (750, 300), (750 - cad, 300 + cop), 5)
         if len(self.tiros) < 10 and self.count % 20 == 0:
             self.tiros.append(Circulo(scr, (50, 50, 255), (750, 300), 20))
 
