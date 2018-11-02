@@ -44,6 +44,7 @@ class Cenario(object):
                 self.count = 0
             elif self.skill == 3:
                 self.boss.anim = 5
+                self.boss.countanim = 0
                 self.boss.skillonda.rect[0] = self.boss.rect[0]
                 self.boss.skillonda.alive = True
                 self.skill += 1
@@ -151,7 +152,8 @@ class Boss(object):
                       pygame.image.load("assets/hantiseca/gsskill1.png").convert_alpha(),
                       pygame.image.load("assets/hantiseca/gsskill2.png").convert_alpha(),
                       pygame.image.load("assets/hantiseca/surf1.png").convert_alpha(),
-                      pygame.image.load("assets/hantiseca/shoot.png").convert_alpha()]
+                      pygame.image.load("assets/hantiseca/shoot.png").convert_alpha(),
+                      pygame.image.load("assets/hantiseca/surf2.png").convert_alpha()]
         self.skillgs = Retangulo(self.scr, (50, 50, 255), [4000, scry, 100, 0], "assets/hantiseca/geiser.png")
         self.skillsoco = Retangulo(self.scr, (50, 50, 255), [4000, 0, 0, 100], "assets/hantiseca/geiser.png")
         self.skillonda = Retangulo(self.scr, (50, 50, 255), [4000, 100, 0, 800], "assets/hantiseca/wave.png")
@@ -165,13 +167,13 @@ class Boss(object):
         self.hand = True
 
     def draw(self):
-        pygame.draw.rect(self.scr, self.color, self.rect, self.width)
+        #pygame.draw.rect(self.scr, self.color, self.rect, self.width)
         if self.countanim > 8 and self.estado == 0:
             self.anim += 1
             if self.anim >= 3:
                 self.anim = 0
             self.countanim = 0
-        self.scr.blit(self.image[self.anim], (self.rect[0] - 200, self.rect[1]))
+        self.scr.blit(self.image[self.anim], (self.rect[0], self.rect[1]))
         pygame.draw.rect(self.scr, (0, 255, 0), [600, 0, self.vida, 50])
         self.countanim += 1
     def update(self):
@@ -188,7 +190,7 @@ class Boss(object):
             self.skillgs.draw()
             self.skillgs.rect[3] += 10
             self.skillgs.rect[1] += -10
-        if self.skillgs.rect[1] < 200:
+        if self.skillgs.rect[1] < 270:
             self.skillgs.alive = False
             self.skillgs.rect[3] = 0
             self.skillgs.rect[1] = scry
@@ -208,6 +210,8 @@ class Boss(object):
 
     def onda(self):
         if self.skillonda.alive:
+            if self.countanim > 60:
+                self.anim = 7
             self.skillonda.draw()
             self.skillonda.rect[2] += 5
             self.skillonda.rect[0] += -5
@@ -226,10 +230,10 @@ class Boss(object):
         #pygame.draw.line(self.scr, (255, 255, 0), (750, 300), (750 - cad, 300 + cop), 5)
         if len(self.tiros) < 10 and self.count % 20 == 0:
             if self.hand:
-                self.tiros.append(Circulo(scr, (50, 50, 255), (650, 500), 20))
+                self.tiros.append(Circulo(scr, (50, 50, 255), (700, 430), 20))
                 self.hand = False
             else:
-                self.tiros.append(Circulo(scr, (50, 50, 255), (700, 500), 20))
+                self.tiros.append(Circulo(scr, (50, 50, 255), (800, 430), 20))
                 self.hand = True
 
         #bolhasdrawandupdate
@@ -254,8 +258,8 @@ class Retangulo(object):
         self.count = 0
 
     def draw(self):
-        pygame.draw.rect(self.scr, self.color, self.rect, self.width)
-        self.scr.blit(self.image, (self.rect[0], self.rect[1]))
+        #pygame.draw.rect(self.scr, self.color, self.rect, self.width)
+        self.scr.blit(self.image, (self.rect[0] - 50, self.rect[1]))
 
 
 class Circulo(object):
@@ -267,7 +271,7 @@ class Circulo(object):
         self.width = 0
         self.alive = False
         self.count = 0
-        self.vely = -10
+        self.vely = -12
 
     def draw(self):
         self.scr.blit(bolha, self.pos)
