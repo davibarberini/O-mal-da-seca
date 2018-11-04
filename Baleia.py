@@ -27,17 +27,58 @@ class Cenario(object):
         #self.musicapos=0
         #self.musicapausada=False
         self.p1 = ply.Player(screen, (0, 0, 255), [width - (width - 50), height - 130, 60, 120], 5, "assets/hantiseca/fabiano.png")
+
     def atualizarcenario(self):
         screen.blit(self.cenario,(0,0))
-        'self.pl.draw()'
         self.ba.draw()
-        'self.pl.update()'
         self.ba.update()
+        self.ba.ataque()
         #if self.musicatoca:
          #   self.musicaplay=pygame.mixer.music.play(5)
           #  self.musicatoca=False
         self.p1.update()
         self.p1.draw()
+        self.colisao()
+
+
+    def colisao(self):
+        p1Rect = pygame.Rect(self.p1.rect)
+
+        if self.ba.rect.colliderect(self.p1.rect) and self.ba.esperadano==0 and self.ba.invencibilidade:
+            self.p1.vida-=20
+            self.ba.acerto=True
+
+
+        elif self.ba.golpe=="preas":
+            for i in range(7):
+                if self.ba.preasrect[i].colliderect(self.p1.rect) and self.ba.esperadano==0:
+                    self.p1.vida-=10
+                    self.ba.acerto=True
+
+        elif self.ba.disparorect.colliderect(self.p1.rect) and self.ba.atacar and self.ba.esperadano==0:
+
+            self.p1.vida-=10
+            self.ba.acerto=True
+
+        if self.p1.atacando:
+            if p1Rect.colliderect(self.ba.rect):
+                if(self.ba.protecao==False):
+                    self.ba.vida -= 3
+                    self.ba.protecao=True
+
+
+
+        if self.p1.tiro.alive:
+            p1tiroRect = pygame.Rect(self.p1.tiro.rect)
+            if p1tiroRect.colliderect(self.ba.rect):
+                self.ba.vida -= 2
+
+        if self.ba.acerto:
+            self.ba.esperadano+=1
+            if(self.ba.esperadano>=150):
+                self.ba.esperadano=0
+                self.ba.acerto=False
+
 
 class Enemy(object):
     def __init__(self,screen,cor,rect,vely):
@@ -57,6 +98,8 @@ class Enemy(object):
         self.atacar=False
         self.golpe=""
         self.invencibilidade=False
+        self.protecao=False
+        self.protecaoespera=0
         self.tempo=0
         self.ataques=0
 
@@ -86,6 +129,9 @@ class Enemy(object):
         self.pulodevolta=False
         self.cairdevolta=False
         self.esperapulo=0
+
+        self.esperadano=0
+        self.acerto=False
 
 
 
@@ -122,6 +168,11 @@ class Enemy(object):
                 self.baleiaalive=False
                 self.vida=0
                 self.atacar=False
+            if self.protecao:
+                self.protecaoespera+=1
+                if(self.protecaoespera>=200):
+                    self.protecaoespera=0
+                    self.protecao=False
 
             self.disparorect=Rect(self.disparo-12,self.rect[1]+100,20,20)
             self.rect[1] += self.vely
@@ -273,18 +324,7 @@ class Enemy(object):
                     self.disparos=0
 
 
-            '''if(self.ataques==5 and self.golpe=="" or self.golpe=="espera"):
-               self.golpe="espera"
-                self.invencibilidade=False
-                self.atacar=False
 
-                if(self.tempo<=300):
-                    self.tempo+=1
-                else:
-                    tempo=0
-                    self.golpe=""
-                    self.ataques=0
-                 self.tempo=0 '''
 
 
 __init__ = "__main__"
@@ -319,31 +359,5 @@ def gameloop():
                 ply.ekeydown(e, cenario)
             elif e.type == KEYUP:
                 ply.ekeyup(e, cenario)
-        cenario.ba.ataque()
+
         pygame.display.update()
-    '''colisão
-        if(cenario.pl.rect.colliderect(cenario.rect)):
-            cenario.pl.pulo=0
-
-        if cenario.ba.rect.colliderect(cenario.pl.rect) and espera==0 and cenario.ba.invencibilidade:
-
-            cenario.pl.vida-=1
-            acertado=True
-
-
-        elif cenario.ba.golpe=="preas":
-            for i in range(7):
-                if cenario.ba.preasrect[i].colliderect(cenario.pl.rect) and espera==0:
-                    cenario.pl.vida-=1
-                    acertado=True
-
-        elif cenario.ba.disparorect.colliderect(cenario.pl.rect) and cenario.ba.atacar and espera==0:
-
-            cenario.pl.vida-=1
-            acertado=True
-
-        if acertado:
-            espera+=1
-            if(espera>=150):
-                espera=0
-                acertado=False '''
