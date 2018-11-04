@@ -71,7 +71,9 @@ class Cenario(object):
         if self.p1.tiro.alive:
             p1tiroRect = pygame.Rect(self.p1.tiro.rect)
             if p1tiroRect.colliderect(self.ba.rect):
-                self.ba.vida -= 2
+                if(self.ba.protecao==False):
+                    self.ba.vida -= 3
+                    self.ba.protecao=True
 
         if self.ba.acerto:
             self.ba.esperadano+=1
