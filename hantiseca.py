@@ -10,24 +10,23 @@ scr = pygame.display.set_mode((scrx, scry), FULLSCREEN, 32)
 
 clock = pygame.time.Clock()
 
-bolha = pygame.image.load("assets/hantiseca/bolha1.png").convert_alpha()
 
 
 class Cenario(object):
     def __init__(self):
         self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 500, 250, 500])
         self.p1 = ply.Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 130, 60, 120], 5, "assets/hantiseca/fabiano.png")
-        #self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
+        self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
         self.count = 0
         self.skill = 1
 
     def update(self):
-        #scr.blit(self.fundo, (0, 0))
+        scr.blit(self.fundo, (0, 0))
         self.draw()
         self.collisions()
         self.boss.update()
         self.p1.update()
-        if self.count > 200:
+        if self.count > 300:
             if self.skill == 1:
                 self.boss.anim = 3
                 self.boss.countanim = 0
@@ -37,8 +36,14 @@ class Cenario(object):
                 self.count = 0
                 self.boss.estado = 1
             elif self.skill == 2:
+                if self.p1.rect[1] > 400:
+                    self.boss.anim = 9
+                    self.boss.skillsoco.rect[1] = 580
+                else:
+                    self.boss.anim = 10
+                    self.boss.skillsoco.rect[1] = 400
+                self.boss.countanim = 0
                 self.boss.skillsoco.rect[0] = self.boss.rect[0]
-                self.boss.skillsoco.rect[1] = self.p1.rect[1]
                 self.boss.skillsoco.alive = True
                 self.skill += 1
                 self.count = 0
@@ -153,10 +158,14 @@ class Boss(object):
                       pygame.image.load("assets/hantiseca/gsskill2.png").convert_alpha(),
                       pygame.image.load("assets/hantiseca/surf1.png").convert_alpha(),
                       pygame.image.load("assets/hantiseca/shoot.png").convert_alpha(),
-                      pygame.image.load("assets/hantiseca/surf2.png").convert_alpha()]
-        self.skillgs = Retangulo(self.scr, (50, 50, 255), [4000, scry, 100, 0], "assets/hantiseca/geiser.png")
-        self.skillsoco = Retangulo(self.scr, (50, 50, 255), [4000, 0, 0, 100], "assets/hantiseca/geiser.png")
+                      pygame.image.load("assets/hantiseca/surf2.png").convert_alpha(),
+                      pygame.image.load("assets/hantiseca/gsskill3.png").convert_alpha(),
+                      pygame.image.load("assets/hantiseca/socoskill1.png").convert_alpha(),
+                      pygame.image.load("assets/hantiseca/socoskill2.png").convert_alpha()]
+        self.skillgs = Retangulo(self.scr, (50, 50, 255), [4000, scry + 10, 100, 0], "assets/hantiseca/geiser.png")
+        self.skillsoco = Retangulo(self.scr, (50, 50, 255), [4000, 0, 0, 100], "assets/hantiseca/soco.png")
         self.skillonda = Retangulo(self.scr, (50, 50, 255), [4000, 100, 0, 800], "assets/hantiseca/wave.png")
+        self.geiserindicator = pygame.image.load("assets/hantiseca/geiserindicator.png").convert_alpha()
         self.tiros = [Circulo(scr, (50, 50, 255), (-500, -500), 20) for e in range (10)]
         self.count = 0
         self.countanim = 0
@@ -165,6 +174,7 @@ class Boss(object):
         #estado 0 = idle
         #estado 1 = not idle
         self.hand = True
+        self.canskill = False
 
     def draw(self):
         #pygame.draw.rect(self.scr, self.color, self.rect, self.width)
@@ -176,6 +186,7 @@ class Boss(object):
         self.scr.blit(self.image[self.anim], (self.rect[0], self.rect[1]))
         pygame.draw.rect(self.scr, (0, 255, 0), [600, 0, self.vida, 50])
         self.countanim += 1
+
     def update(self):
         self.geiser()
         self.soco()
@@ -185,28 +196,39 @@ class Boss(object):
 
     def geiser(self):
         if self.skillgs.alive:
-            if self.countanim > 30:
-                self.anim = 4
-            self.skillgs.draw()
-            self.skillgs.rect[3] += 10
-            self.skillgs.rect[1] += -10
-        if self.skillgs.rect[1] < 270:
-            self.skillgs.alive = False
-            self.skillgs.rect[3] = 0
-            self.skillgs.rect[1] = scry
+            if not self.canskill:
+                if self.countanim > 80:
+                    self.canskill = True
+                    self.anim = 4
+                self.scr.blit(self.geiserindicator, (self.skillgs.rect[0] - 50, self.skillgs.rect[1] - 50))
+            if self.canskill:
+                self.skillgs.draw()
+                self.skillgs.rect[3] += 10
+                self.skillgs.rect[1] += -10
+            if self.skillgs.rect[1] < 270:
+                self.skillgs.alive = False
+                self.canskill = False
+                self.skillgs.rect[3] = 0
+                self.skillgs.rect[1] = scry + 10
+                self.anim = 8
 
     def soco(self):
         if self.skillsoco.alive:
-            self.skillsoco.draw()
-            if not self.skillsoco.rect[0] < 200:
-                self.skillsoco.rect[2] += 10
-                self.skillsoco.rect[0] += -10
-            self.skillsoco.count += 1
-            if self.skillsoco.count > 80:
-                self.skillsoco.alive = False
-                self.skillsoco.count = 0
-                self.skillsoco.rect[2] = 0
-                self.skillsoco.rect[0] = 4000
+            if not self.canskill:
+                if self.countanim > 80:
+                    self.canskill = True
+            if self.canskill:
+                self.skillsoco.draw()
+                if not self.skillsoco.rect[0] < 200:
+                    self.skillsoco.rect[2] += 10
+                    self.skillsoco.rect[0] += -10
+                self.skillsoco.count += 1
+                if self.skillsoco.count > 80:
+                    self.skillsoco.alive = False
+                    self.skillsoco.count = 0
+                    self.skillsoco.rect[2] = 0
+                    self.skillsoco.rect[0] = 4000
+                    self.canskill = False
 
     def onda(self):
         if self.skillonda.alive:
@@ -272,9 +294,11 @@ class Circulo(object):
         self.alive = False
         self.count = 0
         self.vely = -12
+        self.bolhaoriginal = pygame.image.load("assets/hantiseca/bolha1.png").convert_alpha()
+        self.bolha = pygame.transform.scale(self.bolhaoriginal, (40, 40))
 
     def draw(self):
-        self.scr.blit(bolha, self.pos)
+        self.scr.blit(self.bolha, self.pos)
 
 
 

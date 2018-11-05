@@ -29,7 +29,7 @@ def bossselect():
 
     botlassoimgreal = pygame.image.load("assets/intro/botlassoicon.jpg").convert()
     botlassoimg = pygame.transform.scale(botlassoimgreal, (140, 140))
-    hantisecaimgreal = pygame.image.load("assets/intro/hantisecaicon.jpg").convert()
+    hantisecaimgreal = pygame.image.load("assets/intro/hantisecaicon.png").convert()
     hantisecaimg = pygame.transform.scale(hantisecaimgreal, (140, 140))
     lehwaimgreal = pygame.image.load("assets/intro/lehwaicon.png").convert_alpha()
     lehwaimg = pygame.transform.scale(lehwaimgreal, (140, 140))
