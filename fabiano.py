@@ -23,14 +23,14 @@ class Player(object):
 
     def draw(self):
         if self.alive:
-            pygame.draw.rect(self.scr, self.color, self.rect, self.width)
+            #pygame.draw.rect(self.scr, self.color, self.rect, self.width)
             self.scr.blit(self.image, (self.rect[0], self.rect[1]))
             self.tiro.draw()
             self.tiro.update()
 
     def update(self):
         if self.alive:
-            if self.rect[1] + self.vely > 650:
+            if self.rect[1] + self.vely > 570:
                 self.pulo = 0
                 self.vely = 0
             if self.rect[0] + self.velx > 1024 - self.rect[2]:
@@ -95,7 +95,7 @@ class Retangulo(object):
     def update(self):
         if self.alive:
             self.count += 1
-            self.rect[0] += 5
+            self.rect[0] += 10
             if self.count > 200:
                 self.rect[0] = -50
                 self.alive = False

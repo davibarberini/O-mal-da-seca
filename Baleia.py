@@ -26,7 +26,7 @@ class Cenario(object):
         #self.musicatoca=True
         #self.musicapos=0
         #self.musicapausada=False
-        self.p1 = ply.Player(screen, (0, 0, 255), [width - (width - 50), height - 130, 60, 120], 5, "assets/hantiseca/fabiano.png")
+        self.p1 = ply.Player(screen, (0, 0, 255), [width - (width - 50), height - 330, 60, 120], 5, "assets/hantiseca/fabiano.png")
 
     def atualizarcenario(self):
         screen.blit(self.cenario,(0,0))

@@ -14,8 +14,8 @@ clock = pygame.time.Clock()
 
 class Cenario(object):
     def __init__(self):
-        self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 500, 250, 500])
-        self.p1 = ply.Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 130, 60, 120], 5, "assets/hantiseca/fabiano.png")
+        self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 550, 250, 500])
+        self.p1 = ply.Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5, "assets/hantiseca/fabiano.png")
         self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
         self.count = 0
         self.skill = 1
@@ -38,10 +38,10 @@ class Cenario(object):
             elif self.skill == 2:
                 if self.p1.rect[1] > 400:
                     self.boss.anim = 9
-                    self.boss.skillsoco.rect[1] = 580
+                    self.boss.skillsoco.rect[1] = 530
                 else:
                     self.boss.anim = 10
-                    self.boss.skillsoco.rect[1] = 400
+                    self.boss.skillsoco.rect[1] = 350
                 self.boss.countanim = 0
                 self.boss.skillsoco.rect[0] = self.boss.rect[0]
                 self.boss.skillsoco.alive = True
@@ -164,7 +164,7 @@ class Boss(object):
                       pygame.image.load("assets/hantiseca/socoskill2.png").convert_alpha()]
         self.skillgs = Retangulo(self.scr, (50, 50, 255), [4000, scry + 10, 100, 0], "assets/hantiseca/geiser.png")
         self.skillsoco = Retangulo(self.scr, (50, 50, 255), [4000, 0, 0, 100], "assets/hantiseca/soco.png")
-        self.skillonda = Retangulo(self.scr, (50, 50, 255), [4000, 100, 0, 800], "assets/hantiseca/wave.png")
+        self.skillonda = Retangulo(self.scr, (50, 50, 255), [4000, 200, 0, 800], "assets/hantiseca/wave.png")
         self.geiserindicator = pygame.image.load("assets/hantiseca/geiserindicator.png").convert_alpha()
         self.tiros = [Circulo(scr, (50, 50, 255), (-500, -500), 20) for e in range (10)]
         self.count = 0
@@ -241,7 +241,7 @@ class Boss(object):
             if self.skillonda.rect[0] < -200:
                 self.skillonda.alive = False
                 self.skillonda.rect[2] = 0
-                self.skillonda.rect[1] = 100
+                self.skillonda.rect[1] = 200
                 self.skillonda.rect[0] = 4000
 
     def bolhas(self, posp):
@@ -252,10 +252,10 @@ class Boss(object):
         #pygame.draw.line(self.scr, (255, 255, 0), (750, 300), (750 - cad, 300 + cop), 5)
         if len(self.tiros) < 10 and self.count % 20 == 0:
             if self.hand:
-                self.tiros.append(Circulo(scr, (50, 50, 255), (700, 430), 20))
+                self.tiros.append(Circulo(scr, (50, 50, 255), (700, 380), 20))
                 self.hand = False
             else:
-                self.tiros.append(Circulo(scr, (50, 50, 255), (800, 430), 20))
+                self.tiros.append(Circulo(scr, (50, 50, 255), (800, 380), 20))
                 self.hand = True
 
         #bolhasdrawandupdate
