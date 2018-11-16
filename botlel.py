@@ -10,14 +10,13 @@ def gameloop(tela, W, H):
     class Cenario(object):
         def __init__(self):
             self.botlasso = Boss(tela, [780, 0, 150, 170], 0.00, 0, True)
-            self.p1 = ply.Player(tela, (0, 0, 255), [W - (W - 50), H - 330, 60, 120], 5, "assets/hantiseca/fabiano.png")
+            self.p1 = ply.Player(tela, (0, 0, 255), [W - (W - 50), H - 330, 60, 120], 5)
             self.count = 0
             self.botlassocount = 0
             self.fundo = pygame.image.load("assets/botlasso/botlassofundo.png").convert_alpha()
 
         def update(self):
             tela.blit(self.fundo, (0, 0))
-            self.botlasso.draw()
             self.botlasso.update()
             if self.botlassocount > 900:
                 if self.botlasso.skill == 1:
@@ -104,10 +103,6 @@ def gameloop(tela, W, H):
                 if tiro.rect[1] > 800:
                     self.tiros2.remove(tiro)
             self.shoot()
-
-        def draw(self):
-            None
-            # pygame.draw.rect(self.scr, (255, 255, 0), self.rect, 0)
 
         def shoot(self):
             if self.skill == 0:

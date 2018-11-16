@@ -10,8 +10,7 @@ def gameloop(scr, scrx, scry):
     class Cenario(object):
         def __init__(self):
             self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 550, 250, 500])
-            self.p1 = ply.Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5,
-                                 "assets/hantiseca/fabiano.png")
+            self.p1 = ply.Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5)
             self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
             self.count = 0
             self.skill = 1
@@ -75,6 +74,7 @@ def gameloop(scr, scrx, scry):
                 skillRect = pygame.Rect(self.boss.skillgs.rect)
                 if self.p1.vulnerable:
                     if p1Rect.colliderect(skillRect):
+                        self.p1.sounds[1].play()
                         self.p1.vulnerable = False
                         self.p1.vida -= 10
                 if p1Rect.colliderect(skillRect):
@@ -86,6 +86,7 @@ def gameloop(scr, scrx, scry):
                 skillRect = pygame.Rect(self.boss.skillsoco.rect)
                 if self.p1.vulnerable:
                     if p1Rect.colliderect(skillRect):
+                        self.p1.sounds[1].play()
                         self.p1.vulnerable = False
                         self.p1.vida -= 10
                 if p1Rect.colliderect(skillRect):
@@ -97,6 +98,7 @@ def gameloop(scr, scrx, scry):
                 skillRect = pygame.Rect(self.boss.skillonda.rect)
                 if self.p1.vulnerable:
                     if p1Rect.colliderect(skillRect):
+                        self.p1.sounds[1].play()
                         self.p1.vulnerable = False
                         self.p1.vida -= 10
                 if p1Rect.colliderect(skillRect):
@@ -111,6 +113,7 @@ def gameloop(scr, scrx, scry):
                         (x, y) = tiro.pos
                         tiroRect = pygame.Rect([x - 20, y - 20, 40, 40])
                         if p1Rect.colliderect(tiroRect):
+                            self.p1.sounds[1].play()
                             self.p1.vulnerable = False
                             self.p1.vida -= 10
             if self.boss.vulnerable:
@@ -179,7 +182,7 @@ def gameloop(scr, scrx, scry):
                     self.anim = 0
                 self.countanim = 0
             self.scr.blit(self.image[self.anim], (self.rect[0], self.rect[1]))
-            pygame.draw.rect(self.scr, (0, 255, 0), [600, 0, self.vida, 50])
+            pygame.draw.rect(self.scr, (0, 255, 0), [600, 0, self.vida * 3, 50])
             self.countanim += 1
 
         def update(self):

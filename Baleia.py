@@ -15,7 +15,7 @@ fontevitoria=pygame.font.SysFont(fonte, 70, bold=True, italic=False)
 
 class Cenario(object):
     def __init__(self):
-        self.cenario=pygame.image.load("./assets/baleia/imagens/fundo.jpg").convert()
+        self.cenario=pygame.image.load("./assets/baleia/imagens/fundo.png").convert_alpha()
         self.cenario=pygame.transform.scale(self.cenario,(1024,768))
         self.ba = Enemy(screen, (0,255,0), [780, 450, 270, 270], 0)
         self.velx = 6
@@ -26,7 +26,7 @@ class Cenario(object):
         #self.musicatoca=True
         #self.musicapos=0
         #self.musicapausada=False
-        self.p1 = ply.Player(screen, (0, 0, 255), [width - (width - 50), height - 330, 60, 120], 5, "assets/hantiseca/fabiano.png")
+        self.p1 = ply.Player(screen, (0, 0, 255), [width - (width - 50), height - 330, 60, 120], 5)
 
     def atualizarcenario(self):
         screen.blit(self.cenario,(0,0))

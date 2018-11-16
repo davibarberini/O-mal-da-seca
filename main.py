@@ -11,7 +11,7 @@ scry = 768
 
 arial = pygame.font.SysFont("Arial", 64, True, False)
 
-scr = pygame.display.set_mode((scrx, scry), FULLSCREEN, 32)
+scr = pygame.display.set_mode((scrx, scry), 0, 32)
 
 pygame.display.set_caption ("O mal por trás da seca")
 
