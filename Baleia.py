@@ -110,19 +110,28 @@ class Enemy(object):
         self.disparos=0
         self.disparoy=self.rect[1]+100
         self.disparorect=Rect(self.disparo,rect[1]+100,20,20)
-        self.disparoimagem=pygame.image.load("./assets/baleia/imagens/bola.png").convert_alpha()
-        self.disparoimagem2=pygame.image.load("./assets/baleia/imagens/bola2.png").convert_alpha()
+        self.imagemload=[pygame.image.load("./assets/baleia/imagens/cachorro parado.png").convert_alpha(),
+                     pygame.image.load("./assets/baleia/imagens/cachorro andando.png").convert_alpha(),
+                     pygame.image.load("./assets/baleia/imagens/cachorro andando 2.png").convert_alpha(),
+                     pygame.image.load("./assets/baleia/imagens/cachorro atirando.png").convert_alpha(),
+                     pygame.image.load("./assets/baleia/imagens/cachorro pulando.png").convert_alpha()]
+        self.imagem=[pygame.transform.scale(self.imagemload[0],(rect[2],rect[3])),
+                     pygame.transform.scale(self.imagemload[1],(rect[2],rect[3])),
+                     pygame.transform.scale(self.imagemload[2],(rect[2],rect[3])),
+                     pygame.transform.scale(self.imagemload[3],(rect[2],rect[3])),
+                     pygame.transform.scale(self.imagemload[4],(rect[2],rect[3]))]
 
 
-
-        self.disparoimagem=pygame.transform.scale(self.disparoimagem,(20,20))
-        self.disparoimagem2=pygame.transform.scale(self.disparoimagem2,(20,20))
+        self.disparoimagem=pygame.image.load("./assets/baleia/imagens/Tiro.png").convert_alpha()
+        self.disparoimagem2=pygame.image.load("./assets/baleia/imagens/alma.png").convert_alpha()
 
 
         self.preas=list(range(20))
         self.preasvelx=0
-        self.preasimg=pygame.image.load("./assets/baleia/imagens/prea.jpg").convert()
-        self.preasimg=pygame.transform.scale(self.preasimg,(120,120))
+        self.preaload=[pygame.image.load("./assets/baleia/imagens/prea.png").convert_alpha(),
+                       pygame.image.load("./assets/baleia/imagens/prea2.png").convert_alpha()]
+        self.preasimg=[pygame.transform.scale(self.preaload[0],(120,120)),
+                       pygame.transform.scale(self.preaload[1],(120,120))]
         self.vezes=0
         self.preasrect=list(range(20))
 
@@ -135,6 +144,8 @@ class Enemy(object):
         self.esperadano=0
         self.acerto=False
 
+        self.countanim=1
+        self.countanimprea=0
 
 
 
@@ -149,7 +160,22 @@ class Enemy(object):
 
 
         if self.baleiaalive:
-            self.screen.blit(self.imagem, (self.rect[0], self.rect[1]))
+            if self.atacar or self.invencibilidade:
+                if(self.golpe=="investida"):
+                    if(self.countanim<=90):
+                        self.screen.blit(self.imagem[self.countanim//30], (self.rect[0], self.rect[1]))
+                        self.countanim+=1
+                    else:
+                        self.countanim=1
+                elif(self.golpe=="pulo"):
+                    self.screen.blit(self.imagem[4], (self.rect[0], self.rect[1]))
+                elif(self.golpe=="disparo" or "disparos"):
+                    self.screen.blit(self.imagem[3], (self.rect[0], self.rect[1]))
+                elif(self.golpe=="preas"):
+                    self.screen.blit(self.imagem[0], (self.rect[0], self.rect[1]))
+
+            else:
+                self.screen.blit(self.imagem[0], (self.rect[0], self.rect[1]))
 
             
 
@@ -229,7 +255,10 @@ class Enemy(object):
                 for i in range(7):
                     self.preas[i]=(i*360)+self.preasvelx
                     if(self.preas[i]>=-2000):
-                        self.screen.blit(self.preasimg, (self.preas[i]-800+2000+0,600))
+                        if(self.countanimprea<=24):
+                            self.countanimprea=0
+                        self.screen.blit(self.preasimg[self.countanimprea//12], (self.preas[i]-800+2000+0,600))
+                        self.countanimprea+=1
                         self.preasrect[i]=Rect(self.preas[i]-1024+2020+0,600+50,80,40)
 
 
@@ -238,6 +267,7 @@ class Enemy(object):
                         self.golpe=""
                         self.ataques+=1
                         self.preasvelx=0
+                        self.countanimprea=0
                         for i in range(7):
                             self.preas[i]=0
 
@@ -312,12 +342,14 @@ class Enemy(object):
                             self.disparo-=12
                             self.screen.blit(self.disparoimagem2, (self.disparo, self.rect[1]+100))
                         else:
+                            self.disparoimagem2=pygame.transform.flip(self.disparoimagem2,True,False)
                             self.disparos+=1
                     elif(self.disparos%2!=0):
                         if(self.disparo<=1024):
                             self.disparo+=12
                             self.screen.blit(self.disparoimagem2, (self.disparo, self.rect[1]+100))
                         else:
+                            self.disparoimagem2=pygame.transform.flip(self.disparoimagem2,True,False)
                             self.disparos+=1
                 else:
                     self.disparo=self.rect[0]+75
