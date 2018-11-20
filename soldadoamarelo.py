@@ -11,7 +11,7 @@ def gameloop(scr, scrx, scry):
         def __init__(self):
             self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 550, 250, 500])
             self.p1 = ply.Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5)
-            self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
+            self.fundo = pygame.image.load("assets/soldado-amarelo/fundo.png").convert()
             self.count = 0
             self.skill = 1
 
@@ -81,11 +81,8 @@ def gameloop(scr, scrx, scry):
             self.width = 0
             self.vida = 100
             self.vulnerable = False
-            self.image = [pygame.image.load("assets/hantiseca/idle1.png").convert_alpha(),
-                          pygame.image.load("assets/hantiseca/idle2.png").convert_alpha(),
-                          pygame.image.load("assets/hantiseca/idle3.png").convert_alpha(),
-                          pygame.image.load("assets/hantiseca/shoot.png").convert_alpha(),]
-
+            self.imagereal = pygame.image.load("assets/soldado-amarelo/sdamarelo.png").convert_alpha()
+            self.image = pygame.transform.scale(self.imagereal, (250, 500))
             self.tiros = [Circulo(scr, (50, 50, 255), (-500, -500), 20) for e in range(10)]
             self.count = 0
             self.countanim = 0
@@ -98,14 +95,8 @@ def gameloop(scr, scrx, scry):
 
         def draw(self):
             # pygame.draw.rect(self.scr, self.color, self.rect, self.width)
-            if self.countanim > 8 and self.estado == 0:
-                self.anim += 1
-                if self.anim >= 3:
-                    self.anim = 0
-                self.countanim = 0
-            self.scr.blit(self.image[self.anim], (self.rect[0], self.rect[1]))
+            self.scr.blit(self.image, (self.rect[0], self.rect[1]))
             pygame.draw.rect(self.scr, (0, 255, 0), [600, 0, self.vida, 50])
-            self.countanim += 1
 
         def update(self):
             self.count += 1
@@ -159,8 +150,8 @@ def gameloop(scr, scrx, scry):
                 elif e.key == K_b:
                     cenario.boss.tiros = []
                 elif e.key == K_ESCAPE:
-                    from main import gameintro
-                    gameintro()
+                    from main import bossselect
+                    bossselect()
                 ply.ekeydown(e, cenario)
             elif e.type == KEYUP:
                 ply.ekeyup(e, cenario)

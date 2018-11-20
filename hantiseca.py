@@ -319,8 +319,8 @@ def gameloop(scr, scrx, scry):
                 elif e.key == K_b:
                     cenario.boss.tiros = []
                 elif e.key == K_ESCAPE:
-                    from main import gameintro
-                    gameintro()
+                    from main import bossselect
+                    bossselect()
                 ply.ekeydown(e, cenario)
             elif e.type == KEYUP:
                 ply.ekeyup(e, cenario)

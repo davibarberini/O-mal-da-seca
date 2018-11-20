@@ -388,8 +388,8 @@ def gameloop():
                 if e.key == K_f:
                     exit()
                 elif e.key == K_ESCAPE:
-                    from main import gameintro
-                    gameintro()
+                    from main import bossselect
+                    bossselect()
                 ply.ekeydown(e, cenario)
             elif e.type == KEYUP:
                 ply.ekeyup(e, cenario)

@@ -45,6 +45,8 @@ def gameloop(tela, W, H):
 
             self.botlassocount += 1
             self.p1.update()
+            self.p1.damage()
+            self.collisions()
             self.draw()
 
         def draw(self):
@@ -60,6 +62,42 @@ def gameloop(tela, W, H):
                     self.count += 1
                     if self.count >= 40:
                         self.count = 0
+                pygame.draw.rect(tela, (0, 255, 0), [600, 0, self.botlasso.vida * 3, 50])
+
+        def collisions(self):
+            bossRect = pygame.Rect(self.botlasso.rect)
+            if self.p1.tiro.alive:
+                p1tirorect = pygame.Rect(self.p1.tiro.rect)
+                if p1tirorect.colliderect(bossRect):
+                    self.p1.tiro.alive = False
+                    self.botlasso.vida -= 10
+                    self.botlasso.vulnerable = False
+                    self.count = 0
+            if self.p1.vulnerable:
+                p1Rect = pygame.Rect(self.p1.rect)
+                if len(self.botlasso.tiros) == 3:
+                    tiro1Rect = pygame.Rect(self.botlasso.tiros[0].rect)
+                    tiro2Rect = pygame.Rect(self.botlasso.tiros[1].rect)
+                    tiro3Rect = pygame.Rect(self.botlasso.tiros[2].rect)
+                    if p1Rect.colliderect(tiro1Rect):
+                        self.p1.sounds[1].play()
+                        self.p1.vulnerable = False
+                        self.p1.vida -= 10
+                    elif p1Rect.colliderect(tiro2Rect):
+                        self.p1.sounds[1].play()
+                        self.p1.vulnerable = False
+                        self.p1.vida -= 10
+                    elif p1Rect.colliderect(tiro3Rect):
+                        self.p1.sounds[1].play()
+                        self.p1.vulnerable = False
+                        self.p1.vida -= 10
+                elif len(self.botlasso.tiros2) > 0:
+                    for tiro in self.botlasso.tiros2:
+                        tiroRect = pygame.Rect(tiro.rect)
+                        if p1Rect.colliderect(tiroRect):
+                            self.p1.sounds[1].play()
+                            self.p1.vulnerable = False
+                            self.p1.vida -= 10
 
     class Boss(object):
         def __init__(self, scr, rect, speedx, speedy, voando):
@@ -83,6 +121,7 @@ def gameloop(tela, W, H):
             self.tiros = []
             self.tiros2 = []
             self.counttiro = 0
+            self.vida = 100
 
         def update(self):
             if len(self.tiros) == 3:
@@ -144,8 +183,8 @@ def gameloop(tela, W, H):
                 if e.key == K_f:
                     exit()
                 elif e.key == K_ESCAPE:
-                    from main import gameintro
-                    gameintro()
+                    from main import bossselect
+                    bossselect()
                 ply.ekeydown(e, cenario)
             elif e.type == KEYUP:
                 ply.ekeyup(e, cenario)
