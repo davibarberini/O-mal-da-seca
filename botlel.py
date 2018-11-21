@@ -65,14 +65,15 @@ def gameloop(tela, W, H):
                 pygame.draw.rect(tela, (0, 255, 0), [600, 0, self.botlasso.vida * 3, 50])
 
         def collisions(self):
-            bossRect = pygame.Rect(self.botlasso.rect)
-            if self.p1.tiro.alive:
-                p1tirorect = pygame.Rect(self.p1.tiro.rect)
-                if p1tirorect.colliderect(bossRect):
-                    self.p1.tiro.alive = False
-                    self.botlasso.vida -= 10
-                    self.botlasso.vulnerable = False
-                    self.count = 0
+            if self.botlasso.vulnerable:
+                bossRect = pygame.Rect(self.botlasso.rect)
+                if self.p1.tiro.alive:
+                    p1tirorect = pygame.Rect(self.p1.tiro.rect)
+                    if p1tirorect.colliderect(bossRect):
+                        self.botlasso.vida -= 10
+                        self.botlasso.vulnerable = False
+                        self.botlasso.count = 0
+                        self.count = 0
             if self.p1.vulnerable:
                 p1Rect = pygame.Rect(self.p1.rect)
                 if len(self.botlasso.tiros) == 3:
@@ -122,6 +123,8 @@ def gameloop(tela, W, H):
             self.tiros2 = []
             self.counttiro = 0
             self.vida = 100
+            self.count = 0
+            self.vulnerable = True
 
         def update(self):
             if len(self.tiros) == 3:
@@ -142,7 +145,10 @@ def gameloop(tela, W, H):
                 if tiro.rect[1] > 800:
                     self.tiros2.remove(tiro)
             self.shoot()
-
+            if not self.vulnerable:
+                if self.count > 100:
+                    self.vulnerable = True
+                self.count += 1
         def shoot(self):
             if self.skill == 0:
                 if 300 < self.rect[1] < 400:

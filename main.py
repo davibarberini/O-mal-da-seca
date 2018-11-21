@@ -42,7 +42,7 @@ def bossselect():
     hantiseca = {"texto": "Hantiseca", "x": 50, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) ,"mcolide": False}
     lehwa = {"texto": "Lehwa", "x": 400, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
     botlasso = {"texto": "Botlasso", "x": 700, "y": 50, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
-    sdamarelo = {"texto": "Soldado-Amarelo", "x": 400, "y": 400, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
+    sdamarelo = {"texto": "McKurt", "x": 400, "y": 400, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
     start = {"texto": "Start Game", "x": 0, "y": 600, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
     startrender = arial.render(start["texto"], True, start["cor"])
     hantisecarect = hantisecaimg.get_rect()
@@ -70,7 +70,7 @@ def bossselect():
                     elif botlasso["mcolide"] == True:
                         bossselected = "Botlasso"
                     elif sdamarelo["mcolide"] == True:
-                        bossselected = "Soldado-Amarelo"
+                        bossselected = "McKurt"
                     elif start["mcolide"] == True:
                         try:
                             if bossselected == "Hantiseca":
@@ -79,7 +79,7 @@ def bossselect():
                                 lloop.gameloop()
                             elif bossselected == "Botlasso":
                                 bloop.gameloop(scr, scrx, scry)
-                            elif bossselected == "Soldado-Amarelo":
+                            elif bossselected == "McKurt":
                                 sda.gameloop(scr, scrx, scry)
                             run = False
                         except NameError:

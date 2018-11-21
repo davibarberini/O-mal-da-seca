@@ -82,8 +82,8 @@ class Player(object):
             self.rect[0] += self.velx
             self.attack()
             if self.vida < 0:
-                from main import gameintro
-                gameintro()
+                from main import bossselect
+                bossselect()
 
     def attack(self):
         if self.atacando:
