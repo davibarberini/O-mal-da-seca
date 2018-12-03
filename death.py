@@ -105,8 +105,8 @@ def score(scr, fundo, time, fabvida, bosspos):
                             pygame.mixer.music.stop()
                             img = pygame.image.load("assets/intro/introfundo.png").convert_alpha()
                             transition(scr, img)
-                            import intro
-                            intro.intro()
+                            import main
+                            main.bossselect()
                             run = False
 
         pygame.display.update()
@@ -140,8 +140,8 @@ def mortefab(scr):
             elif e.type == MOUSEBUTTONDOWN:
                 if e.button == 1:
                     if mousecolide(simdict, mouse):
-                        import intro
-                        intro.intro()
+                        import main
+                        main.bossselect()
                         run = False
                     elif mousecolide(naodict, mouse):
                         exit()
@@ -160,7 +160,7 @@ def creditos(scr):
     fonte = pygame.font.SysFont("Swis721 Blk BT", 64, True, False)
     scoretotal = fonte.render(str(scoresoma), True, (255, 255, 0))
 
-    music = pygame.mixer.music.load("assets/musics/death.mp3")
+    pygame.mixer.music.load("assets/musics/death.mp3")
     pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play(-1)
 

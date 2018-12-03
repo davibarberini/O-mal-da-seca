@@ -7,24 +7,26 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/O_mal_da_seca$brancos.coverage" NAME="brancos Coverage Results" MODIFIED="1540474112591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Programação/Compressão de Dados/Compressão de brancos" />
-    <SUITE FILE_PATH="coverage/O_mal_da_seca$baleia.coverage" NAME="baleia Coverage Results" MODIFIED="1540557067080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/O_mal_da_seca$soldadoamarelo.coverage" NAME="soldadoamarelo Coverage Results" MODIFIED="1542808595984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/O_mal_da_seca$main.coverage" NAME="main Coverage Results" MODIFIED="1542887030913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/O_mal_da_seca$Baleia.coverage" NAME="Baleia Coverage Results" MODIFIED="1540480343597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$hantiseca.coverage" NAME="hantiseca Coverage Results" MODIFIED="1541081643398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$botlel.coverage" NAME="botlel Coverage Results" MODIFIED="1542810045663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$TOKIWO_TOMARE.coverage" NAME="TOKIWO TOMARE Coverage Results" MODIFIED="1540558594924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Botlasso" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$secatest.coverage" NAME="secatest Coverage Results" MODIFIED="1540553667580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/O_mal_da_seca$botlel.coverage" NAME="botlel Coverage Results" MODIFIED="1542810045663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$brancos.coverage" NAME="brancos Coverage Results" MODIFIED="1540474112591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Programação/Compressão de Dados/Compressão de brancos" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$fabiano.coverage" NAME="fabiano Coverage Results" MODIFIED="1540908897840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/O_mal_da_seca$repetições.coverage" NAME="repetições Coverage Results" MODIFIED="1540473986231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Programação/Compressão de Dados/Compressão de repetições" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$baleia.coverage" NAME="baleia Coverage Results" MODIFIED="1540557067080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$main.coverage" NAME="main Coverage Results" MODIFIED="1543852981023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$Baleia.coverage" NAME="Baleia Coverage Results" MODIFIED="1540480343597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$seca.coverage" NAME="seca Coverage Results" MODIFIED="1540504211228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$repetições.coverage" NAME="repetições Coverage Results" MODIFIED="1540473986231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Programação/Compressão de Dados/Compressão de repetições" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$soldadoamarelo.coverage" NAME="soldadoamarelo Coverage Results" MODIFIED="1542808595984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$intro.coverage" NAME="intro Coverage Results" MODIFIED="1543846460123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../../SMAUG Simples" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -84,20 +86,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fabiano.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="200">
+              <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -105,11 +98,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="mckurt.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mckurt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="death.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/death.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+            <state relative-caret-position="3175">
+              <caret line="128" column="13" lean-forward="true" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fabiano.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fabiano.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4850">
+              <caret line="194" column="32" lean-forward="true" selection-start-line="194" selection-start-column="32" selection-end-line="194" selection-end-column="32" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -117,34 +131,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="botlel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/botlel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1776">
-              <caret line="74" column="47" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
+            <state relative-caret-position="250">
+              <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Baleia.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="hantiseca.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hantiseca.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3024">
-              <caret line="126" column="38" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
+            <state relative-caret-position="1700">
+              <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/soldadoamarelo.py">
+      <file leaf-file-name="Baleia.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Baleia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2256">
-              <caret line="94" selection-start-line="94" selection-end-line="94" />
+            <state relative-caret-position="275">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -174,13 +186,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Baleia.py" />
-        <option value="$PROJECT_DIR$/hantiseca.py" />
         <option value="$PROJECT_DIR$/soldadoamarelo.py" />
-        <option value="$PROJECT_DIR$/botlel.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/death.py" />
+        <option value="$PROJECT_DIR$/../../../../SMAUG Simples/fabiano.py" />
+        <option value="$PROJECT_DIR$/../../../../SMAUG Simples/mckurt.py" />
+        <option value="$PROJECT_DIR$/botlel.py" />
+        <option value="$PROJECT_DIR$/hantiseca.py" />
+        <option value="$PROJECT_DIR$/Baleia.py" />
+        <option value="$PROJECT_DIR$/mckurt.py" />
         <option value="$PROJECT_DIR$/fabiano.py" />
+        <option value="$PROJECT_DIR$/death.py" />
       </list>
     </option>
   </component>
@@ -189,6 +204,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
@@ -221,12 +239,6 @@
               <item name="O-mal-da-seca" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="intro" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="O-mal-da-seca" type="b2602c69:ProjectViewProjectNode" />
-              <item name="O-mal-da-seca" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="soldado-amarelo" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -266,25 +278,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main">
-    <configuration default="true" type="tests" factoryName="Attests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SMAUG" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="SMAUG" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -303,9 +296,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="botlel" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SMAUG" />
@@ -325,31 +315,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="hantiseca" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SMAUG" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\Davi Barberini\AppData\Local\Programs\Python\Python36-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hantiseca.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="imagemcompressao" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SMAUG" />
@@ -369,9 +334,25 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
+    </configuration>
+    <configuration name="intro" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SMAUG" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Davi Barberini\AppData\Local\Programs\Python\Python36-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../.. Simples" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../.. Simples/intro.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SMAUG" />
@@ -391,11 +372,8 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method v="2" />
     </configuration>
     <configuration name="soldadoamarelo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SMAUG" />
@@ -415,24 +393,40 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SMAUG" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
     </configuration>
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python.botlel" />
-      <item itemvalue="Python.hantiseca" />
       <item itemvalue="Python.imagemcompressao" />
       <item itemvalue="Python.soldadoamarelo" />
+      <item itemvalue="Python.intro" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.intro" />
         <item itemvalue="Python.botlel" />
         <item itemvalue="Python.soldadoamarelo" />
         <item itemvalue="Python.imagemcompressao" />
-        <item itemvalue="Python.hantiseca" />
       </list>
     </recent_temporary>
   </component>
@@ -459,55 +453,55 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.23827533" />
-      <window_info id="Structure" order="1" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
-      <window_info id="Favorites" order="2" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993573" weight="0.32786885" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4993573" weight="0.3292683" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50064266" side_tool="true" weight="0.3292683" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4993573" weight="0.3292683" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4993573" weight="0.3292683" />
-      <window_info anchor="bottom" id="Changes" order="11" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993573" weight="0.32655826" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4993573" weight="0.3292683" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50064266" side_tool="true" weight="0.3292683" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.24140401" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info id="Structure" order="1" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
+      <window_info id="Favorites" order="2" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39972898" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="bottom" id="Changes" order="11" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4993573" weight="0.3292683" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.23071104" />
       <window_info id="Structure" order="1" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
-      <window_info id="Favorites" order="2" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993573" visible="true" weight="0.32786885" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4993573" weight="0.3292683" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4993573" weight="0.3292683" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4993573" weight="0.3292683" />
-      <window_info anchor="bottom" id="Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4993573" weight="0.3292683" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50064266" side_tool="true" weight="0.3292683" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4993573" weight="0.3292683" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993573" visible="true" weight="0.32786885" />
+      <window_info anchor="bottom" id="Changes" order="11" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4993573" weight="0.3292683" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50064266" side_tool="true" weight="0.3292683" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4993573" weight="0.3292683" />
+      <window_info id="Favorites" order="2" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,44 +516,115 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../Programação/Prog 2 Exercicios/Animação/animation.py" />
-    <entry file="file://$PROJECT_DIR$/../../../Programação/Compressão de Dados/Compressão de Imagem/imagemcompressao.py" />
-    <entry file="file://$USER_HOME$/SMAUG Simples/fabiano.py" />
-    <entry file="file://$PROJECT_DIR$/botlel.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1776">
-          <caret line="74" column="47" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
+        <state relative-caret-position="425">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Baleia.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/botlel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1850">
+          <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hantiseca.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3024">
+        <state relative-caret-position="3150">
           <caret line="126" column="38" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/soldadoamarelo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2256">
+        <state relative-caret-position="2350">
           <caret line="94" selection-start-line="94" selection-end-line="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/fabiano.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        <state relative-caret-position="1075">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Programação/Prog 2 Exercicios/Animação/animation.py" />
+    <entry file="file://$PROJECT_DIR$/../../../Programação/Compressão de Dados/Compressão de Imagem/imagemcompressao.py" />
+    <entry file="file://$USER_HOME$/SMAUG Simples/fabiano.py" />
+    <entry file="file://$PROJECT_DIR$/soldadoamarelo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2350">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../SMAUG Simples/fabiano.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="83" column="27" lean-forward="true" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../SMAUG Simples/mckurt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="71" column="12" lean-forward="true" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../SMAUG Simples/intro.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../SMAUG Simples/hantiseca.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="102" column="32" lean-forward="true" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Baleia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/death.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+        <state relative-caret-position="3175">
+          <caret line="128" column="13" lean-forward="true" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mckurt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -568,8 +633,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fabiano.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="4850">
+          <caret line="194" column="32" lean-forward="true" selection-start-line="194" selection-start-column="32" selection-end-line="194" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/botlel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hantiseca.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

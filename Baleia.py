@@ -1,7 +1,8 @@
 import pygame
 import fabiano as ply
-from pygame.locals import QUIT, KEYDOWN, KEYUP, K_LEFT, K_RIGHT, K_UP, K_DOWN, FULLSCREEN, K_f, K_r,K_z,K_x,K_c,K_j,K_SPACE,Rect, K_ESCAPE
+from pygame.locals import Rect
 from random import randint
+import time
 
 pygame.init()
 width=1024
@@ -21,6 +22,7 @@ class Cenario(object):
         self.velx = 6
         self.count = 0
         self.rect=Rect((0,598),(800,1))
+        self.inicio = time.time()
 
         #self.musica=pygame.mixer.music.load("./assets/baleia/musicas/golden time lover.mp3")
         #self.musicatoca=True
@@ -36,6 +38,14 @@ class Cenario(object):
         #if self.musicatoca:
          #   self.musicaplay=pygame.mixer.music.play(5)
           #  self.musicatoca=False
+        if self.ba.vida < 0:
+            pygame.mixer.music.stop()
+            self.fim = time.time()
+            tempo = self.fim - self.inicio
+            ply.mortes[1] = True
+            import death
+            death.score(screen, self.cenario, tempo, self.p1.vida, 1)
+
         self.p1.update()
         self.p1.draw()
         self.colisao()
@@ -381,17 +391,6 @@ def gameloop():
         #if cenario.musicapausada == False:
             #cenario.musicapos += 1
 
-        for e in pygame.event.get():
-            if e.type == QUIT:
-                exit()
-            elif e.type == KEYDOWN:
-                if e.key == K_f:
-                    exit()
-                elif e.key == K_ESCAPE:
-                    from main import bossselect
-                    bossselect()
-                ply.ekeydown(e, cenario)
-            elif e.type == KEYUP:
-                ply.ekeyup(e, cenario)
+        ply.eventos(screen, cenario)
 
         pygame.display.update()

@@ -1,8 +1,7 @@
 def gameloop(scr, scrx, scry):
     import pygame
     import fabiano as ply
-    from pygame.locals import FULLSCREEN, QUIT, KEYDOWN, K_g, KEYUP, K_s, K_o, K_r, K_b, K_p, K_f, MOUSEBUTTONDOWN, \
-        K_ESCAPE
+    import time
     pygame.init()
 
     clock = pygame.time.Clock()
@@ -14,6 +13,7 @@ def gameloop(scr, scrx, scry):
             self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
             self.count = 0
             self.skill = 1
+            self.inicio = time.time()
 
         def update(self):
             scr.blit(self.fundo, (0, 0))
@@ -24,6 +24,7 @@ def gameloop(scr, scrx, scry):
             self.p1.update()
             if self.count > 300:
                 if self.skill == 1:
+                    print("aqui")
                     self.boss.anim = 3
                     self.boss.countanim = 0
                     self.boss.skillgs.rect[0] = self.p1.rect[0]
@@ -55,16 +56,19 @@ def gameloop(scr, scrx, scry):
                     self.boss.tiros = []
                     self.skill += 1
                     self.count = 0
-                elif self.skill == 5:
-                    self.boss.estado = 0
-                    self.boss.vulnerable = True
-                    if self.count > 600:
-                        self.skill += 1
-                        self.boss.vulnerable = False
-                        self.count = 0
-                if self.skill > 5:
+                if self.count > 600:
+                    self.skill += 1
+                    self.count = 0
+                if self.skill > 4:
                     self.skill = 1
-                    self.boss.vulnerable = False
+
+            if self.boss.vida < 0:
+                pygame.mixer.music.stop()
+                self.fim = time.time()
+                tempo = self.fim - self.inicio
+                ply.mortes[0] = True
+                import death
+                death.score(scr, self.fundo, tempo, self.p1.vida, 1)
 
             self.count += 1
 
@@ -122,15 +126,11 @@ def gameloop(scr, scrx, scry):
                     if p1Rect.colliderect(bossRect):
                         self.boss.vida -= 10
                         self.boss.vulnerable = False
-                        self.skill += 1
-                        self.count = 0
                 if self.p1.tiro.alive:
                     p1tiroRect = pygame.Rect(self.p1.tiro.rect)
                     if p1tiroRect.colliderect(bossRect):
                         self.boss.vida -= 10
                         self.boss.vulnerable = False
-                        self.skill += 1
-                        self.count = 0
             self.p1.damage()
             if self.boss.vulnerable:
                 self.boss.color = (255, 255, 0)
@@ -148,7 +148,7 @@ def gameloop(scr, scrx, scry):
             self.rect = rect
             self.width = 0
             self.vida = 100
-            self.vulnerable = False
+            self.vulnerable = True
             self.image = [pygame.image.load("assets/hantiseca/idle1.png").convert_alpha(),
                           pygame.image.load("assets/hantiseca/idle2.png").convert_alpha(),
                           pygame.image.load("assets/hantiseca/idle3.png").convert_alpha(),
@@ -166,6 +166,7 @@ def gameloop(scr, scrx, scry):
             self.geiserindicator = pygame.image.load("assets/hantiseca/geiserindicator.png").convert_alpha()
             self.tiros = [Circulo(scr, (50, 50, 255), (-500, -500), 20) for e in range(10)]
             self.count = 0
+            self.countvulnerable = 0
             self.countanim = 0
             self.anim = 0
             self.estado = 0
@@ -190,6 +191,11 @@ def gameloop(scr, scrx, scry):
             self.soco()
             self.onda()
             self.count += 1
+            if not self.vulnerable:
+                if self.countvulnerable > 100:
+                    self.vulnerable = True
+                    self.countvulnerable = 0
+                self.countvulnerable += 1
 
         def geiser(self):
             if self.skillgs.alive:
@@ -300,30 +306,7 @@ def gameloop(scr, scrx, scry):
         clock.tick(120)
         scr.fill((255, 255, 255))
 
-        for e in pygame.event.get():
-            if e.type == QUIT:
-                exit()
-            elif e.type == KEYDOWN:
-                if e.key == K_p:
-                    exit()
-                elif e.key == K_g:
-                    cenario.boss.skillgs.rect[0] = cenario.p1.rect[0]
-                    cenario.boss.skillgs.alive = True
-                elif e.key == K_s:
-                    cenario.boss.skillsoco.rect[0] = cenario.boss.rect[0]
-                    cenario.boss.skillsoco.rect[1] = cenario.p1.rect[1]
-                    cenario.boss.skillsoco.alive = True
-                elif e.key == K_o:
-                    cenario.boss.skillonda.rect[0] = cenario.boss.rect[0]
-                    cenario.boss.skillonda.alive = True
-                elif e.key == K_b:
-                    cenario.boss.tiros = []
-                elif e.key == K_ESCAPE:
-                    from main import bossselect
-                    bossselect()
-                ply.ekeydown(e, cenario)
-            elif e.type == KEYUP:
-                ply.ekeyup(e, cenario)
+        ply.eventos(scr, cenario)
 
         cenario.update()
         pygame.display.update()

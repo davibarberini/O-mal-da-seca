@@ -1,7 +1,7 @@
 def gameloop(tela, W, H):
     import pygame
     import fabiano as ply
-    from pygame.locals import KEYUP, KEYDOWN, K_LEFT, K_RIGHT, K_UP, K_DOWN, K_f, FULLSCREEN, K_ESCAPE
+    import time
 
     pygame.init()
 
@@ -14,6 +14,7 @@ def gameloop(tela, W, H):
             self.count = 0
             self.botlassocount = 0
             self.fundo = pygame.image.load("assets/botlasso/botlassofundo.png").convert_alpha()
+            self.inicio = time.time()
 
         def update(self):
             tela.blit(self.fundo, (0, 0))
@@ -43,11 +44,22 @@ def gameloop(tela, W, H):
                 elif self.botlasso.rect[0] > 700:
                     self.botlasso.speedx = -2
 
+
+
+            if self.botlasso.vida < 0:
+                pygame.mixer.music.stop()
+                self.fim = time.time()
+                tempo = self.fim - self.inicio
+                ply.mortes[2] = True
+                import death
+                death.score(tela, self.fundo, tempo, self.p1.vida, 1)
+
             self.botlassocount += 1
             self.p1.update()
             self.p1.damage()
             self.collisions()
             self.draw()
+
 
         def draw(self):
             self.p1.draw()
@@ -149,19 +161,20 @@ def gameloop(tela, W, H):
                 if self.count > 100:
                     self.vulnerable = True
                 self.count += 1
+
         def shoot(self):
             if self.skill == 0:
                 if 300 < self.rect[1] < 400:
                     if len(self.tiros) < 3:
-                        self.tiros.append(Projetil(self.scr, [self.rect[0], self.rect[1], 100, 50], (255, 255, 0),
+                        self.tiros.append(Projetil(self.scr, [self.rect[0], self.rect[1], 60, 30], (255, 255, 0),
                                                    "assets/botlasso/tiro.png"))
-                        self.tiros.append(Projetil(self.scr, [self.rect[0], self.rect[1], 100, 50], (0, 255, 0),
+                        self.tiros.append(Projetil(self.scr, [self.rect[0], self.rect[1], 60, 30], (0, 255, 0),
                                                    "assets/botlasso/tiro.png"))
-                        self.tiros.append(Projetil(self.scr, [self.rect[0], self.rect[1], 100, 50], (255, 0, 0),
+                        self.tiros.append(Projetil(self.scr, [self.rect[0], self.rect[1], 60, 30], (255, 0, 0),
                                                    "assets/botlasso/tiro.png"))
             else:
                 if len(self.tiros2) < 3 and self.counttiro > 40:
-                    self.tiros2.append(Projetil(self.scr, [self.rect[0], self.rect[1], 50, 100], (255, 255, 0),
+                    self.tiros2.append(Projetil(self.scr, [self.rect[0], self.rect[1], 30, 60], (255, 255, 0),
                                                 "assets/botlasso/tiro2.png"))
                     self.counttiro = 0
                 self.counttiro += 1
@@ -174,7 +187,7 @@ def gameloop(tela, W, H):
             self.image = pygame.image.load(image).convert_alpha()
 
         def draw(self):
-            # pygame.draw.rect(self.scr, self.color, self.rect, 0)
+            pygame.draw.rect(self.scr, self.color, self.rect, 0)
             self.scr.blit(self.image, (self.rect[0], self.rect[1]))
 
     start = True
@@ -182,18 +195,8 @@ def gameloop(tela, W, H):
     while start:
         tela.fill((0, 0, 0))
         clock.tick(120)
-        for e in pygame.event.get():
-            if e.type == pygame.QUIT:
-                exit()
-            if e.type == KEYDOWN:
-                if e.key == K_f:
-                    exit()
-                elif e.key == K_ESCAPE:
-                    from main import bossselect
-                    bossselect()
-                ply.ekeydown(e, cenario)
-            elif e.type == KEYUP:
-                ply.ekeyup(e, cenario)
+
+        ply.eventos(tela, cenario)
 
         cenario.update()
         pygame.display.update()
