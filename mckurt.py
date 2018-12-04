@@ -1,14 +1,15 @@
 import pygame
 import time
 from random import randint
-import fabiano as ply
+from fabiano import Player as ply
+from fabiano import eventos, mortes
 
 clock = pygame.time.Clock()
 
 class Cenario(object):
     def __init__(self, scr, W, H):
         self.scr = scr
-        self.p1 = ply.Player(scr, (0, 0, 255), [W - (W - 50), H - 330, 60, 120], 5)
+        self.p1 = ply(scr, (0, 0, 255), [W - (W - 50), H - 330, 60, 120], 5)
         self.p1.vida = 100
         self.p1.rect[0] = 50
         self.mckurt = Boss([700, 270, 250, 500])
@@ -100,7 +101,7 @@ class Cenario(object):
             pygame.mixer.music.stop()
             self.fim = time.time()
             tempo = self.fim - self.inicio
-            ply.mortes[3] = True
+            mortes[3] = True
             import death
             death.score(self.scr, self.fundo, tempo, self.p1.vida, 2)
 
@@ -144,7 +145,7 @@ def gameloop(scr, W, H):
 
 
         #eventos
-        ply.eventos(scr, cenario)
+        eventos(scr, cenario)
 
 
         pygame.display.update()

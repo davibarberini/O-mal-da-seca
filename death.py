@@ -195,8 +195,8 @@ def creditos(scr):
             elif e.type == MOUSEBUTTONDOWN:
                 if e.button == 1:
                     if mousecolide(voltardict, mouse):
-                        import intro
-                        intro.intro()
+                        import main
+                        main.bossselect()
                         run = False
 
         fundoy -= 1

@@ -1,6 +1,7 @@
 def gameloop(scr, scrx, scry):
     import pygame
-    import fabiano as ply
+    from fabiano import Player as ply
+    from fabiano import eventos, mortes
     import time
     pygame.init()
 
@@ -9,7 +10,7 @@ def gameloop(scr, scrx, scry):
     class Cenario(object):
         def __init__(self):
             self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 550, 250, 500])
-            self.p1 = ply.Player(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5)
+            self.p1 = ply(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5)
             self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
             self.count = 0
             self.skill = 1
@@ -66,7 +67,7 @@ def gameloop(scr, scrx, scry):
                 pygame.mixer.music.stop()
                 self.fim = time.time()
                 tempo = self.fim - self.inicio
-                ply.mortes[0] = True
+                mortes[0] = True
                 import death
                 death.score(scr, self.fundo, tempo, self.p1.vida, 1)
 
@@ -306,7 +307,7 @@ def gameloop(scr, scrx, scry):
         clock.tick(120)
         scr.fill((255, 255, 255))
 
-        ply.eventos(scr, cenario)
+        eventos(scr, cenario)
 
         cenario.update()
         pygame.display.update()

@@ -1,6 +1,7 @@
 def gameloop(tela, W, H):
     import pygame
-    import fabiano as ply
+    from fabiano import Player as ply
+    from fabiano import eventos, mortes
     import time
 
     pygame.init()
@@ -10,7 +11,7 @@ def gameloop(tela, W, H):
     class Cenario(object):
         def __init__(self):
             self.botlasso = Boss(tela, [780, 0, 150, 170], 0.00, 0, True)
-            self.p1 = ply.Player(tela, (0, 0, 255), [W - (W - 50), H - 330, 60, 120], 5)
+            self.p1 = ply(tela, (0, 0, 255), [W - (W - 50), H - 330, 60, 120], 5)
             self.count = 0
             self.botlassocount = 0
             self.fundo = pygame.image.load("assets/botlasso/botlassofundo.png").convert_alpha()
@@ -50,7 +51,7 @@ def gameloop(tela, W, H):
                 pygame.mixer.music.stop()
                 self.fim = time.time()
                 tempo = self.fim - self.inicio
-                ply.mortes[2] = True
+                mortes[2] = True
                 import death
                 death.score(tela, self.fundo, tempo, self.p1.vida, 1)
 
@@ -196,7 +197,7 @@ def gameloop(tela, W, H):
         tela.fill((0, 0, 0))
         clock.tick(120)
 
-        ply.eventos(tela, cenario)
+        eventos(tela, cenario)
 
         cenario.update()
         pygame.display.update()

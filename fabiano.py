@@ -6,6 +6,7 @@ from pygame.locals import K_UP, K_RIGHT, K_LEFT, K_r, K_x, K_z, K_c, K_f, K_ESCA
 
 mortes = [False, False, False, False]
 somascore = [0, 0, 0, 0]
+videoplayed = False
 
 class Player(object):
     def __init__(self, scr, color, rect, vely):

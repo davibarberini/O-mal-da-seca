@@ -1,5 +1,6 @@
 import pygame
-import fabiano as ply
+from fabiano import Player as ply
+from fabiano import eventos, mortes
 from pygame.locals import Rect
 from random import randint
 import time
@@ -28,7 +29,7 @@ class Cenario(object):
         #self.musicatoca=True
         #self.musicapos=0
         #self.musicapausada=False
-        self.p1 = ply.Player(screen, (0, 0, 255), [width - (width - 50), height - 330, 60, 120], 5)
+        self.p1 = ply(screen, (0, 0, 255), [width - (width - 50), height - 330, 60, 120], 5)
 
     def atualizarcenario(self):
         screen.blit(self.cenario,(0,0))
@@ -42,7 +43,7 @@ class Cenario(object):
             pygame.mixer.music.stop()
             self.fim = time.time()
             tempo = self.fim - self.inicio
-            ply.mortes[1] = True
+            mortes[1] = True
             import death
             death.score(screen, self.cenario, tempo, self.p1.vida, 1)
 
@@ -391,6 +392,6 @@ def gameloop():
         #if cenario.musicapausada == False:
             #cenario.musicapos += 1
 
-        ply.eventos(screen, cenario)
+        eventos(screen, cenario)
 
         pygame.display.update()
