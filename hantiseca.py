@@ -15,6 +15,10 @@ def gameloop(scr, scrx, scry):
             self.count = 0
             self.skill = 1
             self.inicio = time.time()
+            pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=256)
+            pygame.mixer.music.load("assets/musics/hantiseca.mp3")
+            pygame.mixer.music.set_volume(0.1)
+            pygame.mixer.music.play(-1)
 
         def update(self):
             scr.blit(self.fundo, (0, 0))

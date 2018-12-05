@@ -5,6 +5,8 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
+pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=256)
+
 def transition(scr, img):
 
     clock = pygame.time.Clock()
@@ -195,6 +197,9 @@ def creditos(scr):
             elif e.type == MOUSEBUTTONDOWN:
                 if e.button == 1:
                     if mousecolide(voltardict, mouse):
+                        pygame.mixer.music.stop()
+                        img = pygame.image.load("assets/intro/introfundo.png").convert_alpha()
+                        transition(scr, img)
                         import main
                         main.bossselect()
                         run = False

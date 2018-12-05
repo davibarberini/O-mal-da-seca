@@ -52,9 +52,9 @@ class Player(object):
         self.imageatacando = [pygame.transform.scale(self.imageatacandoreal[0], (60, 120)),
                               pygame.transform.scale(self.imageatacandoreal[1], (60, 120))]
 
-        self.imgchutereal = pygame.image.load("assets/fabiano/fab_chute.png").convert_alpha()
+        #self.imgchutereal = pygame.image.load("assets/fabiano/fab_chute.png").convert_alpha()
 
-        self.imgchute = pygame.transform.scale(self.imgchutereal, (60, 120))
+        #self.imgchute = pygame.transform.scale(self.imgchutereal, (60, 120))
 
         self.sounds = [pygame.mixer.Sound("assets/fabiano/jumpsound.wav"),
                         pygame.mixer.Sound("assets/fabiano/damagesound.wav")]
@@ -85,8 +85,8 @@ class Player(object):
                 self.countattack += 1
                 if self.countattack >= self.spriteperattack * 2:
                     self.countattack = 0
-            elif self.estado == 4:
-                self.scr.blit(self.imgchute, fabpos)
+            #elif self.estado == 4:
+                #self.scr.blit(self.imgchute, fabpos)
             pygame.draw.rect(self.scr, (0, 255, 0), [0, 0, self.vida * 3, 30], 0)
             if self.counttiro < 60 and self.tiro.alive:
                 self.scr.blit(self.imagetiro, (self.rect[0] + 60, self.rect[1] + 45))
@@ -121,11 +121,7 @@ class Player(object):
 
     def attack(self):
         if self.atacando:
-            print(self.estado)
-            if self.estado == 1 or self.estado == 4:
-                self.estado = 4
-            else:
-                self.estado = 3
+            self.estado = 3
             self.rect[2] = 100
             self.count += 1
             if self.count > 50:

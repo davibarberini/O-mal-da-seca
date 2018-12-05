@@ -16,6 +16,10 @@ def gameloop(tela, W, H):
             self.botlassocount = 0
             self.fundo = pygame.image.load("assets/botlasso/botlassofundo.png").convert_alpha()
             self.inicio = time.time()
+            pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=256)
+            pygame.mixer.music.load("assets/musics/botlasso.mp3")
+            pygame.mixer.music.set_volume(0.1)
+            pygame.mixer.music.play(-1)
 
         def update(self):
             tela.blit(self.fundo, (0, 0))
