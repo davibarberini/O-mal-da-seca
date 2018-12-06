@@ -1,5 +1,5 @@
 import pygame
-from moviepy.editor import VideoFileClip
+#from moviepy.editor import VideoFileClip
 import hantiseca as hanti
 import Baleia as lloop
 import botlel as bloop

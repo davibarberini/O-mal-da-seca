@@ -167,7 +167,7 @@ class Enemy(object):
         vidastring=str(self.vida)
         vidastring="Baleia: "+vidastring
         textovida=fontevitoria.render(vidastring,1,(255,255,255))
-        self.screen.blit(textovida,(700,50))
+        pygame.draw.rect(self.screen, (0, 255, 0), [600, 0, self.vida * 3, 30], 0)
 
 
         if self.baleiaalive:
@@ -191,7 +191,7 @@ class Enemy(object):
             
 
         else:
-            texto=fontevitoria.render('Você matou mano',1,(255,0,00))
+            #texto=fontevitoria.render('Você matou mano',1,(255,0,00))
             self.screen.blit(texto,(150,300))
 
 
@@ -213,7 +213,7 @@ class Enemy(object):
                     self.protecaoespera=0
                     self.protecao=False
 
-            self.disparorect=Rect(self.disparo-12,self.rect[1]+100,20,20)
+            self.disparorect=Rect(self.disparo-12,self.rect[1]+100,228,119)
             self.rect[1] += self.vely
             self.vely += 0.15
             self.rect[0] += self.velx
@@ -228,7 +228,7 @@ class Enemy(object):
                 self.golpe="investida"
                 self.invencibilidade=True
                 if (self.rect[0]>=-350):
-                    self.velx-=5.5
+                    self.velx-=3.5
                     self.rect[0]+=self.velx
 
 
@@ -244,8 +244,10 @@ class Enemy(object):
                 self.golpe="disparo"
                 self.invencibilidade=False
                 if(self.disparo>=-0):
-                    self.disparo-=10
+                    self.disparo-=7
                     self.screen.blit(self.disparoimagem, (self.disparo, self.rect[1]+100))
+
+
                 else:
                     self.disparo=self.rect[0]+75
                     self.golpe=""
@@ -270,7 +272,8 @@ class Enemy(object):
                             self.countanimprea=0
                         self.screen.blit(self.preasimg[self.countanimprea//12], (self.preas[i]-800+2000+0,600))
                         self.countanimprea+=1
-                        self.preasrect[i]=Rect(self.preas[i]-1024+2020+0,600+50,80,40)
+                        self.preasrect[i]=Rect(self.preas[i]-1024+2240+0,600+20,100,200)
+                        
 
 
 
@@ -384,6 +387,9 @@ def gameloop():
     esperafalas = 0
     musica = False
     sompausado = 0
+    cenario.p1.vida=100
+    cenario.ba.baleiaalive=True
+    cenario.ba.vida=100
     #cenario.musicaplay = pygame.mixer.music.play(5)
     while rodar:
         clock.tick(120)
