@@ -6,10 +6,9 @@ import botlel as bloop
 import mckurt as mkloop
 import death
 from pygame.locals import FULLSCREEN, QUIT, KEYDOWN, K_p, K_ESCAPE, MOUSEBUTTONDOWN, K_9
-from fabiano import mortes, somascore, videoplayed
+from fabiano import mortes, somascore, videoplayed, linguagem
 
 pygame.init()
-
 scrx = 1024
 scry = 768
 
@@ -24,7 +23,6 @@ pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=256)
 clock = pygame.time.Clock()
 
 canmckurt = False
-linguagem = ""
 
 def colliderect( obj, mouse, objrender):
     objrect = objrender.get_rect()
@@ -45,7 +43,6 @@ def mousecolide(dict, mousepos):
 def bossselect():
     global bossselected, canmckurt, linguagem
     bossselected = "Hantiseca"
-
     pygame.mixer.music.load("assets/musics/intro.mp3")
     pygame.mixer.music.set_volume(0.1)
     pygame.mixer.music.play(-1)

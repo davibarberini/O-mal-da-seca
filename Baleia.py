@@ -39,7 +39,7 @@ class Cenario(object):
         #if self.musicatoca:
          #   self.musicaplay=pygame.mixer.music.play(5)
           #  self.musicatoca=False
-        if self.ba.vida < 0:
+        if self.ba.vida <= 0:
             pygame.mixer.music.stop()
             self.fim = time.time()
             tempo = self.fim - self.inicio
@@ -74,7 +74,7 @@ class Cenario(object):
         if self.p1.atacando:
             if p1Rect.colliderect(self.ba.rect):
                 if(self.ba.protecao==False):
-                    self.ba.vida -= 3
+                    self.ba.vida -= 10
                     self.ba.protecao=True
 
 
@@ -83,8 +83,9 @@ class Cenario(object):
             p1tiroRect = pygame.Rect(self.p1.tiro.rect)
             if p1tiroRect.colliderect(self.ba.rect):
                 if(self.ba.protecao==False):
-                    self.ba.vida -= 3
+                    self.ba.vida -= 10
                     self.ba.protecao=True
+                self.p1.tiro.candraw = False
 
         if self.ba.acerto:
             self.ba.esperadano+=1
@@ -188,11 +189,6 @@ class Enemy(object):
             else:
                 self.screen.blit(self.imagem[0], (self.rect[0], self.rect[1]))
 
-            
-
-        else:
-            #texto=fontevitoria.render('Você matou mano',1,(255,0,00))
-            self.screen.blit(texto,(150,300))
 
 
     def update(self):
@@ -203,10 +199,6 @@ class Enemy(object):
                 self.velx = 0
             if self.rect[0] + self.velx < -350:
                 self.velx=0
-            if self.vida<=0:
-                self.baleiaalive=False
-                self.vida=0
-                self.atacar=False
             if self.protecao:
                 self.protecaoespera+=1
                 if(self.protecaoespera>=200):

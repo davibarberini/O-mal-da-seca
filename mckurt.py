@@ -86,6 +86,7 @@ class Cenario(object):
         if tiroRect.colliderect(self.mckurt.rect) and self.p1.tiro.alive:
             self.mckurt.vida -= 1
             self.p1.tiro.alive = False
+            self.p1.tiro.candraw = False
 
         for ball in self.bolas:
             (bx, by) = ball["pos"]

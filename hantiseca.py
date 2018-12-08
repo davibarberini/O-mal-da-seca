@@ -136,6 +136,7 @@ def gameloop(scr, scrx, scry):
                     if p1tiroRect.colliderect(bossRect):
                         self.boss.vida -= 10
                         self.boss.vulnerable = False
+                        self.p1.tiro.candraw = False
             self.p1.damage()
             if self.boss.vulnerable:
                 self.boss.color = (255, 255, 0)

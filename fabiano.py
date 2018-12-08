@@ -3,7 +3,7 @@ from pygame.locals import K_UP, K_RIGHT, K_LEFT, K_r, K_x, K_z, K_c, K_f, K_ESCA
                             KEYDOWN, KEYUP
 
 
-
+linguagem = ""
 mortes = [False, False, False, False]
 somascore = [0, 0, 0, 0]
 videoplayed = False
@@ -174,13 +174,14 @@ class Retangulo(object):
         self.width = 0
         self.alive = False
         self.count = 0
+        self.candraw = False
         self.image = pygame.image.load(image).convert_alpha()
         self.sound = pygame.mixer.Sound(sound)
         self.sound2 = pygame.mixer.Sound("assets/fabiano/reloadsound.wav")
 
     def draw(self):
-        if self.alive:
-            pygame.draw.rect(self.scr, self.color, self.rect, self.width)
+        if self.candraw:
+            #pygame.draw.rect(self.scr, self.color, self.rect, self.width)
             self.scr.blit(self.image, (self.rect[0], self.rect[1]))
 
     def update(self):

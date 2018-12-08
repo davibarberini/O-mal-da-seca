@@ -82,6 +82,7 @@ def gameloop(tela, W, H):
                 pygame.draw.rect(tela, (0, 255, 0), [600, 0, self.botlasso.vida * 3, 50])
 
         def collisions(self):
+            p1Rect = pygame.Rect(self.p1.rect)
             if self.botlasso.vulnerable:
                 bossRect = pygame.Rect(self.botlasso.rect)
                 if self.p1.tiro.alive:
@@ -91,8 +92,14 @@ def gameloop(tela, W, H):
                         self.botlasso.vulnerable = False
                         self.botlasso.count = 0
                         self.count = 0
+                        self.p1.tiro.candraw = False
+                if self.p1.atacando:
+                    if p1Rect.colliderect(bossRect):
+                        self.botlasso.vida -= 10
+                        self.botlasso.vulnerable = False
+                        self.botlasso.count = 0
+                        self.count = 0
             if self.p1.vulnerable:
-                p1Rect = pygame.Rect(self.p1.rect)
                 if len(self.botlasso.tiros) == 3:
                     tiro1Rect = pygame.Rect(self.botlasso.tiros[0].rect)
                     tiro2Rect = pygame.Rect(self.botlasso.tiros[1].rect)

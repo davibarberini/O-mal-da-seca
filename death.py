@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import QUIT, MOUSEBUTTONDOWN
+from fabiano import linguagem
 
 pygame.init()
 
@@ -68,7 +69,7 @@ def score(scr, fundo, time, fabvida, bosspos):
     pontos = calculascore(time, fabvida)
     somascore[bosspos] = pontos
 
-    pontofundo = pygame.image.load("assets/intro/pontofundo.png").convert_alpha()
+    pontofundo = pygame.image.load("assets/intro/pontofundo" + linguagem + ".png").convert_alpha()
     vidarender = fonte.render(str(fabvida), True, (255 ,255 ,0))
     temporender = fonte.render(str(int(time)) + "s", True, (255, 255, 0))
     pontosrender = fonte.render(str(pontos), True, (255 ,255 ,0))
@@ -119,7 +120,7 @@ def mortefab(scr):
     pygame.mixer.music.load("assets/musics/death.mp3")
     pygame.mixer.music.play(-1)
 
-    fundo = pygame.image.load("assets/intro/deathfundo.png").convert()
+    fundo = pygame.image.load("assets/intro/deathfundo" + linguagem + ".png").convert()
 
     simdict = {"Nome": "Voltar", "x": 160, "y": 630, "w": 210, "h": 90}
     naodict = {"Nome": "Voltar", "x": 650, "y": 630, "w": 210, "h": 90}
@@ -166,11 +167,11 @@ def creditos(scr):
     pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play(-1)
 
-    fundo = pygame.image.load("assets/intro/creditos.png").convert()
+    fundo = pygame.image.load("assets/intro/creditos" + linguagem + ".png").convert()
 
     voltardict = {"Nome": "Voltar", "x": 0, "y": 600, "w": 210, "h": 90}
     voltarimg = pygame.image.load("assets/intro/botaovoltar.png").convert_alpha()
-    scoreimg = pygame.image.load("assets/intro/pontosimg.png").convert_alpha()
+    scoreimg = pygame.image.load("assets/intro/pontosimg" + linguagem + ".png").convert_alpha()
 
     fundoy = 800
     imgscorey = 2900
