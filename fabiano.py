@@ -58,6 +58,8 @@ class Player(object):
 
         self.sounds = [pygame.mixer.Sound("assets/fabiano/jumpsound.wav"),
                         pygame.mixer.Sound("assets/fabiano/damagesound.wav")]
+
+        self.vidaimagem = pygame.image.load("assets/intro/vidacontorno.png").convert_alpha()
         self.countwalk = 0
         self.spritepersec = 12
         self.countattack = 0
@@ -87,7 +89,9 @@ class Player(object):
                     self.countattack = 0
             #elif self.estado == 4:
                 #self.scr.blit(self.imgchute, fabpos)
-            pygame.draw.rect(self.scr, (0, 255, 0), [0, 0, self.vida * 3, 30], 0)
+            pygame.draw.rect(self.scr, (255 - self.vida * 2, self.vida * 2 , 0), [0, 0, self.vida * 3, 30], 0)
+            self.scr.blit(self.vidaimagem, (0, 0))
+
             if self.counttiro < 60 and self.tiro.alive:
                 self.scr.blit(self.imagetiro, (self.rect[0] + 60, self.rect[1] + 45))
             self.counttiro += 1
@@ -177,7 +181,7 @@ class Retangulo(object):
         self.candraw = False
         self.image = pygame.image.load(image).convert_alpha()
         self.sound = pygame.mixer.Sound(sound)
-        self.sound2 = pygame.mixer.Sound("assets/fabiano/reloadsound.wav")
+        self.sound2 = pygame.mixer.Sound("assets/fabiano/bulletsound.wav")
 
     def draw(self):
         if self.candraw:

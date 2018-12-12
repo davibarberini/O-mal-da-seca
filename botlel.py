@@ -79,7 +79,8 @@ def gameloop(tela, W, H):
                     self.count += 1
                     if self.count >= 40:
                         self.count = 0
-                pygame.draw.rect(tela, (0, 255, 0), [600, 0, self.botlasso.vida * 3, 50])
+                pygame.draw.rect(tela, (255 - self.botlasso.vida * 2, self.botlasso.vida * 2, 0), [700, 0, self.botlasso.vida * 3, 30], 0)
+                tela.blit(self.p1.vidaimagem, (700, 0))
 
         def collisions(self):
             p1Rect = pygame.Rect(self.p1.rect)

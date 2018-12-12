@@ -146,6 +146,8 @@ def gameloop(scr, scrx, scry):
         def draw(self):
             self.boss.draw()
             self.p1.draw()
+            pygame.draw.rect(scr, (255 - self.boss.vida * 2, self.boss.vida * 2, 0), [700, 0, self.boss.vida * 3, 30], 0)
+            scr.blit(self.p1.vidaimagem, (700, 0))
 
     class Boss(object):
         def __init__(self, scr, color, rect):
@@ -189,7 +191,6 @@ def gameloop(scr, scrx, scry):
                     self.anim = 0
                 self.countanim = 0
             self.scr.blit(self.image[self.anim], (self.rect[0], self.rect[1]))
-            pygame.draw.rect(self.scr, (0, 255, 0), [600, 0, self.vida * 3, 50])
             self.countanim += 1
 
         def update(self):

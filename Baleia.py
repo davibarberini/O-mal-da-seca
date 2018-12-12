@@ -50,7 +50,8 @@ class Cenario(object):
         self.p1.update()
         self.p1.draw()
         self.colisao()
-
+        pygame.draw.rect(screen, (255 - self.ba.vida * 2, self.ba.vida * 2, 0), [700, 0, self.ba.vida * 3, 30], 0)
+        screen.blit(self.p1.vidaimagem, (700, 0))
 
     def colisao(self):
         p1Rect = pygame.Rect(self.p1.rect)
@@ -101,8 +102,8 @@ class Enemy(object):
         self.rect=Rect(rect)
         self.x=500
         self.y=400
-        self.imagem=pygame.image.load("./assets/baleia/imagens/cachorro.png").convert_alpha()
-        self.imagem=pygame.transform.scale(self.imagem,(rect[2],rect[3]))
+        #self.imagem=pygame.image.load("../assets/baleia/imagens/cachorro.png").convert_alpha()
+        #self.imagem=pygame.transform.scale(self.imagem,(rect[2],rect[3]))
         self.velx=0
         self.vely=vely
         self.width=20
@@ -165,10 +166,6 @@ class Enemy(object):
         #pygame.draw.rect(self.screen, self.cor, self.rect, self.width)
         if self.vida<=0:
             self.vida=0
-        vidastring=str(self.vida)
-        vidastring="Baleia: "+vidastring
-        textovida=fontevitoria.render(vidastring,1,(255,255,255))
-        pygame.draw.rect(self.screen, (0, 255, 0), [600, 0, self.vida * 3, 30], 0)
 
 
         if self.baleiaalive:

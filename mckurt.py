@@ -113,7 +113,8 @@ class Cenario(object):
         self.scr.blit(self.fundo, (0, 0))
         self.p1.draw()
         self.scr.blit(self.mckurt.images, (self.mckurt.rect[0], self.mckurt.rect[1]))
-        pygame.draw.rect(self.scr, (0, 255, 0), [600, 0, self.mckurt.vida * 3, 30], 0)
+        pygame.draw.rect(self.scr, (255 - self.mckurt.vida * 2, self.mckurt.vida * 2, 0), [700, 0, self.mckurt.vida * 3, 30], 0)
+        self.scr.blit(self.p1.vidaimagem, (700, 0))
 
 
 class Boss(object):
