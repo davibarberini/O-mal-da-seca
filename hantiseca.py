@@ -27,7 +27,7 @@ def gameloop(scr, scrx, scry):
             self.boss.update()
             self.boss.bolhas((self.p1.rect[0], self.p1.rect[1]))
             self.p1.update()
-            if self.count > 300:
+            if self.count > 230:
                 if self.skill == 1:
                     print("aqui")
                     self.boss.anim = 3
@@ -227,7 +227,7 @@ def gameloop(scr, scrx, scry):
         def soco(self):
             if self.skillsoco.alive:
                 if not self.canskill:
-                    if self.countanim > 80:
+                    if self.countanim > 20:
                         self.canskill = True
                 if self.canskill:
                     self.skillsoco.draw()

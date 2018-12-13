@@ -60,7 +60,7 @@ def bossselect():
     if not mortes[1]:
         lehwaimgreal = pygame.image.load("assets/intro/lehwaicon.png").convert_alpha()
     else:
-        lehwaimgreal = pygame.image.load("assets/intro/lehwaicon.png").convert_alpha()
+        lehwaimgreal = pygame.image.load("assets/intro/lehwaicondead.png").convert_alpha()
     lehwaimg = pygame.transform.scale(lehwaimgreal, (140, 140))
     if not mortes[3]:
         mckurtimgreal = pygame.image.load("assets/intro/mckurticon.png").convert()
@@ -216,6 +216,10 @@ def bossselect():
 
 
 def tutorial(scr):
+    from fabiano import Player as ply
+    from fabiano import eventostuto
+
+    p1 = ply(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5)
 
     fundo = pygame.image.load("assets/intro/tuto" + linguagem + ".png").convert()
 
@@ -223,23 +227,17 @@ def tutorial(scr):
 
     run = True
     while run:
-        clock.tick(60)
+        clock.tick(120)
 
         #draw
         scr.blit(fundo, (0, 0))
-
+        p1.draw()
 
         #update
-        mouse = pygame.mouse.get_pos()
+        p1.update()
 
         #eventos
-        for e in pygame.event.get():
-            if e.type == QUIT:
-                exit()
-            elif e.type == MOUSEBUTTONDOWN:
-                if e.button == 1:
-                    if mousecolide(voltar, mouse):
-                        run = False
+        eventostuto(scr, p1, voltar)
 
         pygame.display.update()
 

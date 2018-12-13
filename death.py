@@ -99,7 +99,7 @@ def score(scr, fundo, time, fabvida, bosspos):
             elif e.type == MOUSEBUTTONDOWN:
                 if e.button == 1:
                     if mousecolide(voltardict, mouse):
-                        if mortes[0] == True and mortes[1] == True and mortes[2] == True:
+                        if mortes[0] == True and mortes[1] == True and mortes[2] == True and mortes[3] == True:
                             pygame.mixer.music.stop()
                             img = pygame.image.load("assets/intro/fundopreto.png").convert()
                             transition(scr, img)

@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import K_UP, K_RIGHT, K_LEFT, K_r, K_x, K_z, K_c, K_f, K_ESCAPE,\
-                            KEYDOWN, KEYUP
+                            KEYDOWN, KEYUP, MOUSEBUTTONDOWN
 
 
 linguagem = ""
@@ -69,6 +69,7 @@ class Player(object):
         self.posslash = (0, 0)
         self.slashalive = False
         self.slashcount = 0
+        self.paralisado = False
 
     def draw(self):
         if self.alive:
@@ -76,7 +77,7 @@ class Player(object):
             #pygame.draw.rect(self.scr, self.color, self.rect, self.width)
             #self.scr.blit(self.image, (self.rect[0], self.rect[1]))
             self.tiro.draw()
-            self.tiro.update()
+            self.tiro.update(self.paralisado)
             # pygame.draw.rect(scr, fabiano["cor"], fabiano["rect"], 0)
             if self.estado == 0:
                 self.scr.blit(self.image[0], fabpos)
@@ -92,7 +93,7 @@ class Player(object):
                 self.countattack += 1
                 if self.countattack >= self.spriteperattack * 2:
                     self.countattack = 0
-            #elif self.estado == 4:
+                #elif self.estado == 4:
                 #self.scr.blit(self.imgchute, fabpos)
             pygame.draw.rect(self.scr, (255 - self.vida * 2, self.vida * 2 , 0), [0, 0, self.vida * 3, 30], 0)
             self.scr.blit(self.vidaimagem, (0, 0))
@@ -100,6 +101,9 @@ class Player(object):
             if self.counttiro < 60 and self.tiro.alive:
                 self.scr.blit(self.imagetiro, (self.rect[0] + 60, self.rect[1] + 45))
             self.counttiro += 1
+            if self.paralisado:
+                if not self.estado == 1:
+                    self.estado = 0
 
     def update(self):
         if self.alive:
@@ -119,9 +123,10 @@ class Player(object):
             if self.rect[0] + self.velx < 0:
                 self.estado = 0
                 self.velx = 0
-            self.rect[1] += self.vely
-            self.vely += 0.20
-            self.rect[0] += self.velx
+            if not self.paralisado:
+                self.rect[1] += self.vely
+                self.vely += 0.20
+                self.rect[0] += self.velx
             self.attack()
             if self.vida <= 0:
                 pygame.mixer.stop()
@@ -197,23 +202,24 @@ class Retangulo(object):
         self.candraw = False
         self.image = pygame.image.load(image).convert_alpha()
         self.sound = pygame.mixer.Sound(sound)
-        self.sound2 = pygame.mixer.Sound("assets/fabiano/bulletsound.wav")
+        self.sound2 = pygame.mixer.Sound("assets/fabiano/reloadsound.wav")
 
     def draw(self):
         if self.candraw:
             #pygame.draw.rect(self.scr, self.color, self.rect, self.width)
             self.scr.blit(self.image, (self.rect[0], self.rect[1]))
 
-    def update(self):
+    def update(self, paralisado):
         if self.alive:
-            self.count += 1
-            self.rect[0] += 20
-            if self.count == 150:
-                self.sound2.play()
-            if self.count > 200:
-                self.rect[0] = -50
-                self.alive = False
-                self.count = 0
+            if not paralisado:
+                self.count += 1
+                self.rect[0] += 20
+                if self.count == 50:
+                    self.sound2.play()
+                if self.count > 100:
+                    self.rect[0] = -50
+                    self.alive = False
+                    self.count = 0
 
 
 def eventos(scr, cenario):
@@ -222,28 +228,34 @@ def eventos(scr, cenario):
             exit()
         if e.type == KEYDOWN:
             if e.key == K_UP and cenario.p1.pulo <= 1:
-                cenario.p1.sounds[0].play()
-                cenario.p1.pulo += 1
-                cenario.p1.vely = -9
-                cenario.p1.estado = 1
+                if not cenario.p1.paralisado:
+                    cenario.p1.sounds[0].play()
+                    cenario.p1.pulo += 1
+                    cenario.p1.vely = -9
+                    cenario.p1.estado = 1
             if e.key == K_RIGHT:
-                cenario.p1.velx = 6 // cenario.p1.slow
-                if not cenario.p1.estado == 1:
-                    cenario.p1.estado = 2
+                if not cenario.p1.paralisado:
+                    cenario.p1.velx = 6 // cenario.p1.slow
+                    if not cenario.p1.estado == 1:
+                        cenario.p1.estado = 2
             elif e.key == K_LEFT:
-                cenario.p1.velx = -6 // cenario.p1.slow
-                if not cenario.p1.estado == 1:
-                    cenario.p1.estado = 2
+                if not cenario.p1.paralisado:
+                    cenario.p1.velx = -6 // cenario.p1.slow
+                    if not cenario.p1.estado == 1:
+                        cenario.p1.estado = 2
             elif e.key == K_x:
-                cenario.p1.countattack = 0
-                cenario.p1.atacando = True
+                if not cenario.p1.paralisado:
+                    cenario.p1.countattack = 0
+                    cenario.p1.atacando = True
             elif e.key == K_z:
-                cenario.p1.shoot()
+                if not cenario.p1.paralisado:
+                    cenario.p1.shoot()
             elif e.key == K_r:
                 cenario.p1.vida = 100
             elif e.key == K_c:
-                cenario.p1.dash()
-                cenario.p1.estado = 1
+                if not cenario.p1.paralisado:
+                    cenario.p1.dash()
+                    cenario.p1.estado = 1
             if e.key == K_f:
                 exit()
             elif e.key == K_ESCAPE:
@@ -261,3 +273,68 @@ def eventos(scr, cenario):
                 cenario.p1.velx = 0
                 if not cenario.p1.estado == 1:
                     cenario.p1.estado = 0
+
+def mousecolide(dict, mousepos):
+    dictrect = pygame.Rect([dict["x"], dict["y"], dict["w"], dict["h"]])
+    if dictrect.collidepoint(mousepos):
+        return True
+    else:
+        return False
+
+def eventostuto(scr, p1, voltar):
+    mouse = pygame.mouse.get_pos()
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            exit()
+        if e.type == KEYDOWN:
+            if e.key == K_UP and p1.pulo <= 1:
+                if not p1.paralisado:
+                    p1.sounds[0].play()
+                    p1.pulo += 1
+                    p1.vely = -9
+                    p1.estado = 1
+            if e.key == K_RIGHT:
+                if not p1.paralisado:
+                    p1.velx = 6 // p1.slow
+                    if not p1.estado == 1:
+                        p1.estado = 2
+            elif e.key == K_LEFT:
+                if not p1.paralisado:
+                    p1.velx = -6 // p1.slow
+                    if not p1.estado == 1:
+                        p1.estado = 2
+            elif e.key == K_x:
+                if not p1.paralisado:
+                    p1.countattack = 0
+                    p1.atacando = True
+            elif e.key == K_z:
+                if not p1.paralisado:
+                    p1.shoot()
+            elif e.key == K_r:
+                p1.vida = 100
+            elif e.key == K_c:
+                if not p1.paralisado:
+                    p1.dash()
+                    p1.estado = 1
+            if e.key == K_f:
+                exit()
+            elif e.key == K_ESCAPE:
+                from death import transition
+                img = pygame.image.load("assets/intro/introfundo.png").convert_alpha()
+                transition(scr, img)
+                from main import bossselect
+                bossselect()
+        elif e.type == KEYUP:
+            if e.key == K_RIGHT and p1.velx > 0:
+                p1.velx = 0
+                if not p1.estado == 1:
+                    p1.estado = 0
+            elif e.key == K_LEFT and p1.velx < 0:
+                p1.velx = 0
+                if not p1.estado == 1:
+                    p1.estado = 0
+        elif e.type == MOUSEBUTTONDOWN:
+            if e.button == 1:
+                if mousecolide(voltar, mouse):
+                    run = False
+

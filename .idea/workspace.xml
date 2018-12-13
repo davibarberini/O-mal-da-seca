@@ -21,7 +21,7 @@
     <SUITE FILE_PATH="coverage/O_mal_da_seca$brancos.coverage" NAME="brancos Coverage Results" MODIFIED="1540474112591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Programação/Compressão de Dados/Compressão de brancos" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$fabiano.coverage" NAME="fabiano Coverage Results" MODIFIED="1540908897840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$baleia.coverage" NAME="baleia Coverage Results" MODIFIED="1540557067080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/O_mal_da_seca$main.coverage" NAME="main Coverage Results" MODIFIED="1544659583540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/O_mal_da_seca$main.coverage" NAME="main Coverage Results" MODIFIED="1544720862929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$Baleia.coverage" NAME="Baleia Coverage Results" MODIFIED="1540480343597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$seca.coverage" NAME="seca Coverage Results" MODIFIED="1540504211228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/O_mal_da_seca$repetições.coverage" NAME="repetições Coverage Results" MODIFIED="1540473986231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Programação/Compressão de Dados/Compressão de repetições" />
@@ -86,11 +86,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1025">
-              <caret line="126" column="41" lean-forward="true" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
+            <state relative-caret-position="281">
+              <caret line="231" column="13" lean-forward="true" selection-start-line="231" selection-start-column="13" selection-end-line="231" selection-end-column="13" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -101,7 +101,7 @@
       <file leaf-file-name="mckurt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mckurt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
+            <state relative-caret-position="-575">
               <caret line="95" column="64" selection-start-line="95" selection-start-column="64" selection-end-line="95" selection-end-column="64" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -113,8 +113,8 @@
       <file leaf-file-name="death.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/death.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="145" column="39" selection-start-line="145" selection-start-column="39" selection-end-line="145" selection-end-column="39" />
+            <state relative-caret-position="200">
+              <caret line="101" column="110" selection-start-line="101" selection-start-column="110" selection-end-line="101" selection-end-column="110" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -122,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fabiano.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fabiano.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fabiano.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="253" column="28" lean-forward="true" selection-start-line="253" selection-start-column="28" selection-end-line="253" selection-end-column="28" />
+            <state relative-caret-position="-1021">
+              <caret line="284" column="34" selection-start-line="284" selection-start-column="34" selection-end-line="284" selection-end-column="34" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -137,8 +137,8 @@
       <file leaf-file-name="botlel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/botlel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="26" column="86" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
+            <state relative-caret-position="175">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -146,8 +146,8 @@
       <file leaf-file-name="hantiseca.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hantiseca.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="134" column="66" selection-start-line="134" selection-start-column="66" selection-end-line="134" selection-end-column="66" />
+            <state relative-caret-position="-7332">
+              <caret line="12" column="89" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -155,7 +155,7 @@
       <file leaf-file-name="Baleia.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Baleia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="825">
               <caret line="38" column="70" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -194,13 +194,13 @@
         <option value="$PROJECT_DIR$/soldadoamarelo.py" />
         <option value="$PROJECT_DIR$/../../../../SMAUG Simples/fabiano.py" />
         <option value="$PROJECT_DIR$/../../../../SMAUG Simples/mckurt.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Baleia.py" />
-        <option value="$PROJECT_DIR$/hantiseca.py" />
-        <option value="$PROJECT_DIR$/botlel.py" />
         <option value="$PROJECT_DIR$/mckurt.py" />
+        <option value="$PROJECT_DIR$/botlel.py" />
+        <option value="$PROJECT_DIR$/hantiseca.py" />
         <option value="$PROJECT_DIR$/death.py" />
         <option value="$PROJECT_DIR$/fabiano.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -228,7 +228,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,33 +235,11 @@
               <item name="O-mal-da-seca" type="b2602c69:ProjectViewProjectNode" />
               <item name="O-mal-da-seca" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="O-mal-da-seca" type="b2602c69:ProjectViewProjectNode" />
-              <item name="O-mal-da-seca" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="O-mal-da-seca" type="b2602c69:ProjectViewProjectNode" />
-              <item name="O-mal-da-seca" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="baleia" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="O-mal-da-seca" type="b2602c69:ProjectViewProjectNode" />
-              <item name="O-mal-da-seca" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="fabiano" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="O-mal-da-seca" type="b2602c69:ProjectViewProjectNode" />
-              <item name="O-mal-da-seca" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="musics" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -481,7 +458,7 @@
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4993573" weight="0.3292683" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993573" weight="0.199187" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4993573" weight="0.3292683" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.18911175" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.19197708" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -498,28 +475,28 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.23071104" />
       <window_info id="Structure" order="1" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4993573" weight="0.3292683" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4993573" weight="0.3292683" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993573" visible="true" weight="0.32786885" />
       <window_info anchor="bottom" id="Changes" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4993573" weight="0.3292683" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4993573" weight="0.3292683" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50064266" side_tool="true" weight="0.3292683" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4993573" weight="0.3292683" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4993573" weight="0.3292683" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Favorites" order="2" sideWeight="0.5010101" side_tool="true" weight="0.20244215" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,46 +516,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Baleia.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fabiano.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="92" column="50" lean-forward="true" selection-start-line="92" selection-start-column="50" selection-end-line="92" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1075">
-          <caret line="43" column="45" lean-forward="true" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mckurt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/death.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -883,10 +820,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/Baleia.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="126" column="41" lean-forward="true" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
+        <state relative-caret-position="825">
+          <caret line="38" column="70" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/botlasso/menacing4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/botlasso/menacing3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/botlasso/menacing2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/botlasso/menacing1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/botlel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/death.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="101" column="110" selection-start-line="101" selection-start-column="110" selection-end-line="101" selection-end-column="110" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -895,42 +861,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hantiseca.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="134" column="66" selection-start-line="134" selection-start-column="66" selection-end-line="134" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Baleia.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="38" column="70" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/botlel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="26" column="86" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
+        <state relative-caret-position="-7332">
+          <caret line="12" column="89" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mckurt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="-575">
           <caret line="95" column="64" selection-start-line="95" selection-start-column="64" selection-end-line="95" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/death.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="145" column="39" selection-start-line="145" selection-start-column="39" selection-end-line="145" selection-end-column="39" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -939,8 +878,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fabiano.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1021">
+          <caret line="284" column="34" selection-start-line="284" selection-start-column="34" selection-end-line="284" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
-          <caret line="253" column="28" lean-forward="true" selection-start-line="253" selection-start-column="28" selection-end-line="253" selection-end-column="28" />
+          <caret line="231" column="13" lean-forward="true" selection-start-line="231" selection-start-column="13" selection-end-line="231" selection-end-column="13" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
