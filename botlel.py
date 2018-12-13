@@ -24,6 +24,7 @@ def gameloop(tela, W, H):
         def update(self):
             tela.blit(self.fundo, (0, 0))
             self.botlasso.update()
+            self.p1.posslash = (self.botlasso.rect[0] + 10, self.botlasso.rect[1] + 10)
             if self.botlassocount > 900:
                 if self.botlasso.skill == 1:
                     self.botlasso.skill = 0
@@ -51,7 +52,7 @@ def gameloop(tela, W, H):
 
 
 
-            if self.botlasso.vida < 0:
+            if self.botlasso.vida <= 0:
                 pygame.mixer.music.stop()
                 self.fim = time.time()
                 tempo = self.fim - self.inicio
@@ -60,10 +61,10 @@ def gameloop(tela, W, H):
                 death.score(tela, self.fundo, tempo, self.p1.vida, 1)
 
             self.botlassocount += 1
-            self.p1.update()
             self.p1.damage()
             self.collisions()
             self.draw()
+            self.p1.update()
 
 
         def draw(self):
@@ -98,6 +99,7 @@ def gameloop(tela, W, H):
                     if p1Rect.colliderect(bossRect):
                         self.botlasso.vida -= 10
                         self.botlasso.vulnerable = False
+                        self.p1.slashalive = True
                         self.botlasso.count = 0
                         self.count = 0
             if self.p1.vulnerable:

@@ -143,6 +143,8 @@ def mortefab(scr):
             elif e.type == MOUSEBUTTONDOWN:
                 if e.button == 1:
                     if mousecolide(simdict, mouse):
+                        img = pygame.image.load("assets/intro/introfundo.png").convert_alpha()
+                        transition(scr, img)
                         import main
                         main.bossselect()
                         run = False

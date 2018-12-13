@@ -36,6 +36,7 @@ class Cenario(object):
         self.ba.draw()
         self.ba.update()
         self.ba.ataque()
+        self.p1.posslash = (self.ba.rect[0] + 20, self.ba.rect[1] + 80)
         #if self.musicatoca:
          #   self.musicaplay=pygame.mixer.music.play(5)
           #  self.musicatoca=False
@@ -77,6 +78,7 @@ class Cenario(object):
                 if(self.ba.protecao==False):
                     self.ba.vida -= 10
                     self.ba.protecao=True
+                    self.p1.slashalive = True
 
 
 

@@ -67,7 +67,7 @@ def gameloop(scr, scrx, scry):
                 if self.skill > 4:
                     self.skill = 1
 
-            if self.boss.vida < 0:
+            if self.boss.vida <= 0:
                 pygame.mixer.music.stop()
                 self.fim = time.time()
                 tempo = self.fim - self.inicio
@@ -131,6 +131,8 @@ def gameloop(scr, scrx, scry):
                     if p1Rect.colliderect(bossRect):
                         self.boss.vida -= 10
                         self.boss.vulnerable = False
+                        self.p1.slashalive = True
+                        self.p1.posslash = (self.boss.rect[0] + 80, self.p1.rect[1] + 30)
                 if self.p1.tiro.alive:
                     p1tiroRect = pygame.Rect(self.p1.tiro.rect)
                     if p1tiroRect.colliderect(bossRect):

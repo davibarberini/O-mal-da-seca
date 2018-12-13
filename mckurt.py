@@ -27,6 +27,7 @@ class Cenario(object):
         self.inicio = time.time()
 
     def update(self):
+        self.mckurt.update()
         self.p1.update()
         self.p1.damage()
         if self.mckurt.skill == 1:
@@ -80,13 +81,19 @@ class Cenario(object):
                 self.mckurt.skill = 1
                 self.bolavel = -10
                 self.mckurt.count = 0
-
         fabRect = pygame.Rect(self.p1.rect)
         tiroRect = pygame.Rect(self.p1.tiro.rect)
-        if tiroRect.colliderect(self.mckurt.rect) and self.p1.tiro.alive:
-            self.mckurt.vida -= 1
-            self.p1.tiro.alive = False
-            self.p1.tiro.candraw = False
+        if self.mckurt.vulnerable:
+            if tiroRect.colliderect(self.mckurt.rect) and self.p1.tiro.alive:
+                self.mckurt.vida -= 5
+                self.p1.tiro.candraw = False
+                self.mckurt.vulnerable = False
+            if self.p1.atacando:
+                if fabRect.colliderect(self.mckurt.rect):
+                    self.mckurt.vida -= 5
+                    self.mckurt.vulnerable = False
+                    self.p1.slashalive = True
+                    self.p1.posslash = (self.mckurt.rect[0] + 60, self.p1.rect[1] + 30)
 
         for ball in self.bolas:
             (bx, by) = ball["pos"]
@@ -98,7 +105,7 @@ class Cenario(object):
                     self.p1.sounds[1].play()
                     self.p1.vulnerable = False
 
-        if self.mckurt.vida < 0:
+        if self.mckurt.vida <= 0:
             pygame.mixer.music.stop()
             self.fim = time.time()
             tempo = self.fim - self.inicio
@@ -127,7 +134,15 @@ class Boss(object):
         self.images = pygame.transform.scale(self.imagereal, (250, 500))
         self.sounds = pygame.mixer.Sound("assets/mckurt/bulletsound.wav")
         self.cannon = 1
+        self.vulnerable = True
+        self.vulcount = 0
 
+    def update(self):
+        if not self.vulnerable:
+            self.vulcount += 1
+            if self.vulcount > 100:
+                self.vulnerable = True
+                self.vulcount = 0
 
 
 

@@ -60,10 +60,15 @@ class Player(object):
                         pygame.mixer.Sound("assets/fabiano/damagesound.wav")]
 
         self.vidaimagem = pygame.image.load("assets/intro/vidacontorno.png").convert_alpha()
+        self.slashimg = pygame.image.load("assets/fabiano/slash.png").convert_alpha()
+        self.slashimg = pygame.transform.scale(self.slashimg, (120, 120))
         self.countwalk = 0
         self.spritepersec = 12
         self.countattack = 0
         self.spriteperattack = 20
+        self.posslash = (0, 0)
+        self.slashalive = False
+        self.slashcount = 0
 
     def draw(self):
         if self.alive:
@@ -98,6 +103,8 @@ class Player(object):
 
     def update(self):
         if self.alive:
+            if self.vida < 0:
+                self.vida = 0
             if self.rect[1] + self.vely > 570:
                 self.pulo = 0
                 self.vely = 0
@@ -116,12 +123,13 @@ class Player(object):
             self.vely += 0.20
             self.rect[0] += self.velx
             self.attack()
-            if self.vida < 0:
+            if self.vida <= 0:
                 pygame.mixer.stop()
                 import death
                 img = pygame.image.load("assets/intro/deathfundo.png").convert_alpha()
                 death.transition(self.scr, img)
                 death.mortefab(self.scr)
+            self.slash()
 
     def attack(self):
         if self.atacando:
@@ -146,6 +154,7 @@ class Player(object):
             self.tiro.sound.play()
             self.tiro.rect[0] = self.rect[0] + 45
             self.tiro.rect[1] = self.rect[1] + 45
+            self.tiro.candraw = True
             self.tiro.alive = True
 
     def dash(self):
@@ -169,6 +178,13 @@ class Player(object):
                 self.slow = 1
             self.countvul += 1
 
+    def slash(self):
+        if self.slashalive:
+            self.scr.blit(self.slashimg, self.posslash)
+            self.slashcount += 1
+            if self.slashcount > 100:
+                self.slashalive = False
+                self.slashcount = 0
 
 class Retangulo(object):
     def __init__(self, scr, color, rect, image, sound):
@@ -231,6 +247,9 @@ def eventos(scr, cenario):
             if e.key == K_f:
                 exit()
             elif e.key == K_ESCAPE:
+                from death import transition
+                img = pygame.image.load("assets/intro/introfundo.png").convert_alpha()
+                transition(scr, img)
                 from main import bossselect
                 bossselect()
         elif e.type == KEYUP:
