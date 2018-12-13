@@ -3,7 +3,6 @@ from pygame.locals import K_UP, K_RIGHT, K_LEFT, K_r, K_x, K_z, K_c, K_f, K_ESCA
                             KEYDOWN, KEYUP, MOUSEBUTTONDOWN
 
 
-linguagem = ""
 mortes = [False, False, False, False]
 somascore = [0, 0, 0, 0]
 videoplayed = False
@@ -57,7 +56,8 @@ class Player(object):
         #self.imgchute = pygame.transform.scale(self.imgchutereal, (60, 120))
 
         self.sounds = [pygame.mixer.Sound("assets/fabiano/jumpsound.wav"),
-                        pygame.mixer.Sound("assets/fabiano/damagesound.wav")]
+                        pygame.mixer.Sound("assets/fabiano/damagesound.wav"),
+                        pygame.mixer.Sound("assets/fabiano/slashsound.wav")]
 
         self.vidaimagem = pygame.image.load("assets/intro/vidacontorno.png").convert_alpha()
         self.slashimg = pygame.image.load("assets/fabiano/slash.png").convert_alpha()
@@ -70,6 +70,7 @@ class Player(object):
         self.slashalive = False
         self.slashcount = 0
         self.paralisado = False
+        self.tutorial = False
 
     def draw(self):
         if self.alive:
@@ -95,8 +96,9 @@ class Player(object):
                     self.countattack = 0
                 #elif self.estado == 4:
                 #self.scr.blit(self.imgchute, fabpos)
-            pygame.draw.rect(self.scr, (255 - self.vida * 2, self.vida * 2 , 0), [0, 0, self.vida * 3, 30], 0)
-            self.scr.blit(self.vidaimagem, (0, 0))
+            if not self.tutorial:
+                pygame.draw.rect(self.scr, (255 - self.vida * 2, self.vida * 2 , 0), [0, 0, self.vida * 3, 30], 0)
+                self.scr.blit(self.vidaimagem, (0, 0))
 
             if self.counttiro < 60 and self.tiro.alive:
                 self.scr.blit(self.imagetiro, (self.rect[0] + 60, self.rect[1] + 45))
@@ -244,6 +246,8 @@ def eventos(scr, cenario):
                     if not cenario.p1.estado == 1:
                         cenario.p1.estado = 2
             elif e.key == K_x:
+                if not cenario.p1.atacando:
+                    cenario.p1.sounds[2].play()
                 if not cenario.p1.paralisado:
                     cenario.p1.countattack = 0
                     cenario.p1.atacando = True
@@ -259,6 +263,7 @@ def eventos(scr, cenario):
             if e.key == K_f:
                 exit()
             elif e.key == K_ESCAPE:
+                pygame.mixer.stop()
                 from death import transition
                 img = pygame.image.load("assets/intro/introfundo.png").convert_alpha()
                 transition(scr, img)
@@ -304,6 +309,8 @@ def eventostuto(scr, p1, voltar):
                     if not p1.estado == 1:
                         p1.estado = 2
             elif e.key == K_x:
+                if not p1.atacando:
+                    p1.sounds[2].play()
                 if not p1.paralisado:
                     p1.countattack = 0
                     p1.atacando = True
@@ -319,6 +326,7 @@ def eventostuto(scr, p1, voltar):
             if e.key == K_f:
                 exit()
             elif e.key == K_ESCAPE:
+                p1.tutorial = False
                 from death import transition
                 img = pygame.image.load("assets/intro/introfundo.png").convert_alpha()
                 transition(scr, img)
@@ -336,5 +344,10 @@ def eventostuto(scr, p1, voltar):
         elif e.type == MOUSEBUTTONDOWN:
             if e.button == 1:
                 if mousecolide(voltar, mouse):
-                    run = False
+                    p1.tutorial = False
+                    from death import transition
+                    img = pygame.image.load("assets/intro/introfundo.png").convert_alpha()
+                    transition(scr, img)
+                    from main import bossselect
+                    bossselect()
 

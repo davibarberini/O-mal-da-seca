@@ -20,6 +20,7 @@ class Cenario(object):
         self.bolaimg2 = pygame.transform.scale(self.bolaimgreal, (40, 40))
         self.bolavel = -10
         self.count = 0
+        self.countanim = 0
         pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=256)
         pygame.mixer.music.load("assets/musics/mckurt.mp3")
         pygame.mixer.music.set_volume(0.1)
@@ -119,7 +120,13 @@ class Cenario(object):
     def draw(self):
         self.scr.blit(self.fundo, (0, 0))
         self.p1.draw()
-        self.scr.blit(self.mckurt.images, (self.mckurt.rect[0], self.mckurt.rect[1]))
+        if self.mckurt.skill == 1:
+            self.scr.blit(self.mckurt.image, (self.mckurt.rect[0], self.mckurt.rect[1]))
+        else:
+            self.scr.blit(self.mckurt.reloading[self.countanim // 24], (self.mckurt.rect[0], self.mckurt.rect[1]))
+            self.countanim += 1
+            if self.countanim >= 4 * 24:
+                self.countanim = 0
         pygame.draw.rect(self.scr, (255 - self.mckurt.vida * 2, self.mckurt.vida * 2, 0), [700, 0, self.mckurt.vida * 3, 30], 0)
         self.scr.blit(self.p1.vidaimagem, (700, 0))
 
@@ -130,8 +137,19 @@ class Boss(object):
         self.count = 0
         self.skill = 1
         self.vida = 100
-        self.imagereal = pygame.image.load("assets/mckurt/mckurt.png").convert_alpha()
-        self.images = pygame.transform.scale(self.imagereal, (250, 500))
+        self.imagereal = [pygame.image.load("assets/mckurt/mckurt.png").convert_alpha(),
+                          pygame.image.load("assets/mckurt/shoot1.png").convert_alpha(),
+                          pygame.image.load("assets/mckurt/shoot2.png").convert_alpha(),
+                          pygame.image.load("assets/mckurt/shoot3.png").convert_alpha(),
+                          pygame.image.load("assets/mckurt/shoot4.png").convert_alpha()]
+
+        self.image = pygame.transform.scale(self.imagereal[0], (250, 500))
+
+        self.reloading = [pygame.transform.scale(self.imagereal[1], (250, 500)),
+                          pygame.transform.scale(self.imagereal[2], (250, 500)),
+                          pygame.transform.scale(self.imagereal[3], (250, 500)),
+                          pygame.transform.scale(self.imagereal[4], (250, 500))]
+
         self.sounds = pygame.mixer.Sound("assets/mckurt/bulletsound.wav")
         self.cannon = 1
         self.vulnerable = True

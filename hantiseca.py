@@ -19,6 +19,9 @@ def gameloop(scr, scrx, scry):
             pygame.mixer.music.load("assets/musics/hantiseca.mp3")
             pygame.mixer.music.set_volume(0.1)
             pygame.mixer.music.play(-1)
+            self.rain = pygame.mixer.Sound("assets/hantiseca/rain.wav")
+            self.rain.set_volume(0.3)
+            self.rain.play()
 
         def update(self):
             scr.blit(self.fundo, (0, 0))
@@ -29,7 +32,7 @@ def gameloop(scr, scrx, scry):
             self.p1.update()
             if self.count > 230:
                 if self.skill == 1:
-                    print("aqui")
+                    self.boss.sounds[0].play()
                     self.boss.anim = 3
                     self.boss.countanim = 0
                     self.boss.skillgs.rect[0] = self.p1.rect[0]
@@ -38,6 +41,7 @@ def gameloop(scr, scrx, scry):
                     self.count = 0
                     self.boss.estado = 1
                 elif self.skill == 2:
+                    self.boss.sounds[1].play()
                     if self.p1.rect[1] > 400:
                         self.boss.anim = 9
                         self.boss.skillsoco.rect[1] = 530
@@ -50,6 +54,7 @@ def gameloop(scr, scrx, scry):
                     self.skill += 1
                     self.count = 0
                 elif self.skill == 3:
+                    self.boss.sounds[2].play()
                     self.boss.anim = 5
                     self.boss.countanim = 0
                     self.boss.skillonda.rect[0] = self.boss.rect[0]
@@ -68,7 +73,7 @@ def gameloop(scr, scrx, scry):
                     self.skill = 1
 
             if self.boss.vida <= 0:
-                pygame.mixer.music.stop()
+                pygame.mixer.stop()
                 self.fim = time.time()
                 tempo = self.fim - self.inicio
                 mortes[0] = True
@@ -170,6 +175,15 @@ def gameloop(scr, scrx, scry):
                           pygame.image.load("assets/hantiseca/gsskill3.png").convert_alpha(),
                           pygame.image.load("assets/hantiseca/socoskill1.png").convert_alpha(),
                           pygame.image.load("assets/hantiseca/socoskill2.png").convert_alpha()]
+
+            self.sounds = [pygame.mixer.Sound("assets/hantiseca/geiser.wav"),
+                           pygame.mixer.Sound("assets/hantiseca/soco.wav"),
+                           pygame.mixer.Sound("assets/hantiseca/onda.wav"),
+                           pygame.mixer.Sound("assets/hantiseca/bolha.wav")]
+            self.sounds[0].set_volume(0.5)
+            self.sounds[1].set_volume(0.7)
+            self.sounds[3].set_volume(0.7)
+
             self.skillgs = Retangulo(self.scr, (50, 50, 255), [4000, scry + 10, 100, 0], "assets/hantiseca/geiser.png")
             self.skillsoco = Retangulo(self.scr, (50, 50, 255), [4000, 0, 0, 100], "assets/hantiseca/soco.png")
             self.skillonda = Retangulo(self.scr, (50, 50, 255), [4000, 200, 0, 800], "assets/hantiseca/wave.png")
@@ -264,9 +278,11 @@ def gameloop(scr, scrx, scry):
             # pygame.draw.line(self.scr, (255, 255, 0), (750, 300), (750 - cad, 300 + cop), 5)
             if len(self.tiros) < 10 and self.count % 20 == 0:
                 if self.hand:
+                    self.sounds[3].play()
                     self.tiros.append(Circulo(scr, (50, 50, 255), (700, 380), 20))
                     self.hand = False
                 else:
+                    self.sounds[3].play()
                     self.tiros.append(Circulo(scr, (50, 50, 255), (800, 380), 20))
                     self.hand = True
 

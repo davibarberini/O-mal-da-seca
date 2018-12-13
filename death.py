@@ -1,8 +1,9 @@
 import pygame
-from pygame.locals import QUIT, MOUSEBUTTONDOWN
-from fabiano import linguagem
+from pygame.locals import QUIT, MOUSEBUTTONDOWN, KEYDOWN, KEYUP, K_z
 
 pygame.init()
+
+linguagem = ""
 
 clock = pygame.time.Clock()
 
@@ -177,7 +178,8 @@ def creditos(scr):
 
     fundoy = 800
     imgscorey = 2900
-    scorey = 2900
+    scorey = 2914
+    vely = 1
 
     run = True
     while run:
@@ -186,7 +188,7 @@ def creditos(scr):
 
         # draw
         scr.blit(fundo, (0, fundoy))
-        scr.blit(scoretotal, (600, scorey))
+        scr.blit(scoretotal, (520, scorey))
         scr.blit(scoreimg, (300, imgscorey))
         scr.blit(voltarimg, (0, 600))
 
@@ -206,9 +208,16 @@ def creditos(scr):
                         import main
                         main.bossselect()
                         run = False
+            elif e.type == KEYDOWN:
+                if e.key == K_z:
+                    vely = 3
+            elif e.type == KEYUP:
+                if e.key == K_z:
+                    vely = 1
 
-        fundoy -= 1
+
+        fundoy -= vely
         if scorey > 200:
-            imgscorey -= 1
-            scorey -= 1
+            imgscorey -= vely
+            scorey -= vely
         pygame.display.update()

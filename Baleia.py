@@ -119,7 +119,9 @@ class Enemy(object):
         self.protecaoespera=0
         self.tempo=0
         self.ataques=0
-
+        self.soundskill = False
+        self.sounds = [pygame.mixer.Sound("assets/baleia/imagens/latido.wav"),
+                       pygame.mixer.Sound("assets/baleia/imagens/uivo.wav")]
 
         self.disparo=self.rect[0]+100
         self.disparos=0
@@ -213,8 +215,11 @@ class Enemy(object):
     def ataque(self):
         if self.baleiaalive:
             r=randint(1,4)
-            if(r==1 and self.golpe=="" or self.golpe=="investida"):
 
+            if(r==1 and self.golpe=="" or self.golpe=="investida"):
+                if not self.soundskill:
+                    self.sounds[0].play()
+                    self.soundskill = True
                 self.velx=0
                 self.golpe="investida"
                 self.invencibilidade=True
@@ -224,6 +229,7 @@ class Enemy(object):
 
 
                 else:
+                    self.soundskill = False
                     self.invencibilidade=False
                     self.rect[0]=730
                     self.golpe=""
@@ -231,6 +237,9 @@ class Enemy(object):
 
 
             elif(r==2 and self.golpe=="" or self.golpe=="disparo"):
+                if not self.soundskill:
+                    self.sounds[0].play()
+                    self.soundskill = True
                 self.atacar=True
                 self.golpe="disparo"
                 self.invencibilidade=False
@@ -240,13 +249,16 @@ class Enemy(object):
 
 
                 else:
+                    self.soundskill = False
                     self.disparo=self.rect[0]+75
                     self.golpe=""
                     self.ataques+=1
 
 
             elif(r==3 and self.golpe=="" or self.golpe=="preas"):
-
+                if not self.soundskill:
+                    self.sounds[1].play()
+                    self.soundskill = True
                 self.velx=0
                 self.golpe="preas"
                 self.invencibilidade=False
@@ -269,6 +281,7 @@ class Enemy(object):
 
 
                     if(self.preas[6]<=-1600):
+                        self.soundskill = False
                         self.golpe=""
                         self.ataques+=1
                         self.preasvelx=0
@@ -277,6 +290,9 @@ class Enemy(object):
                             self.preas[i]=0
 
             elif(r==4 and self.golpe=="" or self.golpe=="pulo"):
+                if not self.soundskill:
+                    self.sounds[0].play()
+                    self.soundskill = True
                 self.vely=0
                 self.velx=0
                 self.atacar=False
@@ -288,6 +304,9 @@ class Enemy(object):
                     if(self.pulodevolta==False):
                         self.velx-=1.5
                     elif(self.pulodevolta):
+                        if not self.soundskill:
+                            self.sounds[0].play()
+                            self.soundskill = True
                         self.velx+=2.1
                     self.rect[1]+=self.vely
                     self.rect[0]+=self.velx
@@ -295,6 +314,7 @@ class Enemy(object):
 
                 elif(self.rect[1]<=0 and (self.pulo==False or self.pulodevolta)):
                     self.pulo=True
+                    self.soundskill = False
                     if(self.pulodevolta):
                         self.cairdevolta=True
                         self.pulodevolta=False
@@ -326,6 +346,7 @@ class Enemy(object):
 
 
                 else:
+                    self.soundskill = False
                     self.invencibilidade=False
                     self.esperapulo=0
                     self.pulo=False
@@ -338,6 +359,9 @@ class Enemy(object):
 
 
             if(self.ataques>=5 and self.golpe=="" or self.golpe=="disparos"):
+                if not self.soundskill:
+                    self.sounds[1].play()
+                    self.soundskill = True
                 self.atacar=True
                 self.golpe="disparos"
                 self.invencibilidade=False
@@ -357,6 +381,7 @@ class Enemy(object):
                             self.disparoimagem2=pygame.transform.flip(self.disparoimagem2,True,False)
                             self.disparos+=1
                 else:
+                    self.soundskill = False
                     self.disparo=self.rect[0]+75
                     self.golpe=""
                     self.ataques=0

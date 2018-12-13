@@ -63,6 +63,7 @@ def gameloop(tela, W, H):
                     self.botlasso.rect[1] = 100
                     self.countfundo = 0
                     self.zwsound.play()
+                    self.botlasso.soundskill = False
                     self.botlasso.skill = 2
                     self.botlasso.canshoot = False
                     self.botlasso.countzw = 0
@@ -241,6 +242,12 @@ def gameloop(tela, W, H):
             self.vulnerable = True
             self.canshoot = False
             self.mencount = 0
+            self.soundskill = False
+            self.sounds = [pygame.mixer.Sound("assets/botlasso/penaenderman.wav"),
+                           pygame.mixer.Sound("assets/botlasso/volley.wav"),
+                           pygame.mixer.Sound("assets/botlasso/tiropena.wav")]
+            self.sounds[0].set_volume(0.5)
+            self.sounds[2].set_volume(0.5)
 
         def update(self):
             if len(self.tiros) == 3:
@@ -263,16 +270,29 @@ def gameloop(tela, W, H):
             if len(self.tiros3) == 6 and self.countzw > 100:
                 if self.countzw > 120:
                     self.tiros3[0].draw()
+                    if not self.soundskill:
+                        self.sounds[0].play()
                 if self.countzw > 140:
                     self.tiros3[1].draw()
+                    if not self.soundskill:
+                        self.sounds[0].play()
                 if self.countzw > 160:
                     self.tiros3[2].draw()
+                    if not self.soundskill:
+                        self.sounds[0].play()
                 if self.countzw > 180:
                     self.tiros3[3].draw()
+                    if not self.soundskill:
+                        self.sounds[0].play()
                 if self.countzw > 200:
                     self.tiros3[4].draw()
+                    if not self.soundskill:
+                        self.sounds[0].play()
                 if self.countzw > 220:
                     self.tiros3[5].draw()
+                    if not self.soundskill:
+                        self.sounds[0].play()
+                    self.soundskill = True
                 if self.canshoot:
                     self.tiros3[0].rect[1] += 4
                     self.tiros3[1].rect[1] += 4
@@ -298,6 +318,7 @@ def gameloop(tela, W, H):
             if self.skill == 0:
                 if 300 < self.rect[1] < 400:
                     if len(self.tiros) < 3:
+                        self.sounds[1].play()
                         self.tiros.append(Projetil(self.scr, [self.rect[0], self.rect[1], 60, 30], (255, 255, 0),
                                                    "assets/botlasso/tiro.png"))
                         self.tiros.append(Projetil(self.scr, [self.rect[0], self.rect[1], 60, 30], (0, 255, 0),
@@ -306,6 +327,7 @@ def gameloop(tela, W, H):
                                                    "assets/botlasso/tiro.png"))
             elif self.skill == 1:
                 if len(self.tiros2) < 3 and self.counttiro > 40:
+                    self.sounds[2].play()
                     self.tiros2.append(Projetil(self.scr, [self.rect[0], self.rect[1], 30, 60], (255, 255, 0),
                                                 "assets/botlasso/tiro2.png"))
                     self.counttiro = 0

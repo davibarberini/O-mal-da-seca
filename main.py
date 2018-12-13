@@ -6,7 +6,7 @@ import botlel as bloop
 import mckurt as mkloop
 import death
 from pygame.locals import FULLSCREEN, QUIT, KEYDOWN, K_p, K_ESCAPE, MOUSEBUTTONDOWN, K_9
-from fabiano import mortes, somascore, videoplayed, linguagem
+from fabiano import mortes, somascore, videoplayed
 
 pygame.init()
 scrx = 1024
@@ -33,6 +33,15 @@ def colliderect( obj, mouse, objrender):
         obj["correct"] = (255, 255, 0)
         obj["mcolide"] = False
 
+def collidelanguage( obj, mouse, objrender):
+    objrect = objrender.get_rect()
+    if obj["x"] + objrect.w > mouse[0] > obj["x"] and obj["y"] + objrect.h > mouse[1] > obj["y"]:
+        obj["scale"] = (120, 120)
+        obj["mcolide"] = True
+    else:
+        obj["scale"] = (100, 100)
+        obj["mcolide"] = False
+
 def mousecolide(dict, mousepos):
     dictrect = pygame.Rect([dict["x"], dict["y"], dict["w"], dict["h"]])
     if dictrect.collidepoint(mousepos):
@@ -41,7 +50,7 @@ def mousecolide(dict, mousepos):
         return False
 
 def bossselect():
-    global bossselected, canmckurt, linguagem
+    global bossselected, canmckurt
     bossselected = "Hantiseca"
     pygame.mixer.music.load("assets/musics/intro.mp3")
     pygame.mixer.music.set_volume(0.1)
@@ -76,12 +85,10 @@ def bossselect():
     mckurt = {"texto": "McKurt", "x": 430, "y": 400, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
     start = {"texto": "Start Game", "x": 0, "y": 470, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
     startrender = arial.render(start["texto"], True, start["cor"])
-    ingles = {"Nome": "Voltar", "x": 860, "y": 360, "w": 100, "h": 100, "correct": (255, 255, 0)}
+    ingles = {"Nome": "Voltar", "x": 860, "y": 360, "w": 100, "h": 70, "scale": (100, 100)}
     inglesimgreal = pygame.image.load("assets/intro/inglesicon.png").convert_alpha()
-    inglesimg = pygame.transform.scale(inglesimgreal, (100, 100))
-    portugues = {"Nome": "Voltar", "x": 860, "y": 510, "w": 100, "h": 100, "correct": (255, 255, 0)}
+    portugues = {"Nome": "Voltar", "x": 860, "y": 510, "w": 100, "h": 70, "scale": (100, 100)}
     portuguesimgreal = pygame.image.load("assets/intro/brasilicon.png").convert_alpha()
-    portuguesimg = pygame.transform.scale(portuguesimgreal, (100, 100))
     hantisecarect = hantisecaimg.get_rect()
     botlassorect = botlassoimg.get_rect()
     lehwarect = lehwaimg.get_rect()
@@ -91,14 +98,16 @@ def bossselect():
     tutorect = tuto.get_rect()
     tutodict = {"x": 0, "y": 600, "w": tutorect.w, "h": tutorect.h}
     posseta = (170, 300)
-    if linguagem == "eng":
+    if death.linguagem == "eng":
         posir = (800, 400)
     else:
         posir = (800, 550)
     run = True
     while run:
-        imgchoose = pygame.image.load("assets/intro/bosschoose" + linguagem + ".png").convert_alpha()
-        sair = pygame.image.load("assets/intro/sair" + linguagem + ".png").convert_alpha()
+        inglesimg = pygame.transform.scale(inglesimgreal, ingles["scale"])
+        portuguesimg = pygame.transform.scale(portuguesimgreal, portugues["scale"])
+        imgchoose = pygame.image.load("assets/intro/bosschoose" + death.linguagem + ".png").convert_alpha()
+        sair = pygame.image.load("assets/intro/sair" + death.linguagem + ".png").convert_alpha()
         mouse = pygame.mouse.get_pos()
         fundo = pygame.image.load("assets/intro/" + bossselected + "fundo.png").convert()
         if mortes[0] and mortes[1] and mortes[2]:
@@ -112,6 +121,9 @@ def bossselect():
                     exit()
                 if e.key == K_9:
                     canmckurt = True
+                    mortes[0] = True
+                    mortes[1] = True
+                    mortes[2] = True
             elif e.type == MOUSEBUTTONDOWN:
                 if e.button == 1:
                     sairrect = sair.get_rect()
@@ -132,22 +144,22 @@ def bossselect():
                     elif start["mcolide"] == True:
                         try:
                             if bossselected == "Hantiseca":
-                                img = pygame.image.load("assets/hantiseca/lore" + linguagem + ".png").convert()
+                                img = pygame.image.load("assets/hantiseca/lore" + death.linguagem + ".png").convert()
                                 death.transition(scr, img)
                                 lores(bossselected)
                                 hanti.gameloop(scr, scrx, scry)
                             elif bossselected == "Lehwa":
-                                img = pygame.image.load("assets/baleia/lore" + linguagem + ".png").convert()
+                                img = pygame.image.load("assets/baleia/lore" + death.linguagem + ".png").convert()
                                 death.transition(scr, img)
                                 lores(bossselected)
                                 lloop.gameloop()
                             elif bossselected == "Botlasso":
-                                img = pygame.image.load("assets/botlasso/lore" + linguagem + ".png").convert()
+                                img = pygame.image.load("assets/botlasso/lore" + death.linguagem + ".png").convert()
                                 death.transition(scr, img)
                                 lores(bossselected)
                                 bloop.gameloop(scr, scrx, scry)
                             elif bossselected == "McKurt":
-                                img = pygame.image.load("assets/mckurt/lore" + linguagem + ".png").convert()
+                                img = pygame.image.load("assets/mckurt/lore" + death.linguagem + ".png").convert()
                                 death.transition(scr, img)
                                 lores(bossselected)
                                 mkloop.gameloop(scr, scrx, scry)
@@ -155,10 +167,10 @@ def bossselect():
                         except NameError:
                             print("Não selecionou o boss")
                     elif mousecolide(ingles, mouse):
-                        linguagem = "eng"
+                        death.linguagem = "eng"
                         posir = (800, 400)
                     elif mousecolide(portugues, mouse):
-                        linguagem = ""
+                        death.linguagem = ""
                         posir = (800, 550)
                     elif mousecolide(tutodict, mouse):
                         tutorial(scr)
@@ -173,12 +185,10 @@ def bossselect():
         scr.blit(sair, (850, 680))
         scr.blit(imgseta, posseta)
         scr.blit(imgsetalingua, posir)
-        pygame.draw.circle(scr, ingles["correct"], (ingles["x"] + 50, ingles["y"] + 50), (ingles["w"] // 2) + 5)
-        pygame.draw.circle(scr, portugues["correct"], (portugues["x"] + 50, portugues["y"] + 50), (portugues["w"] // 2) + 5)
         scr.blit(inglesimg, (ingles["x"], ingles["y"]))
         scr.blit(portuguesimg, (portugues["x"], portugues["y"]))
-        colliderect(ingles, mouse, inglesimg)
-        colliderect(portugues, mouse, portuguesimg)
+        collidelanguage(ingles, mouse, inglesimg)
+        collidelanguage(portugues, mouse, portuguesimg)
 
 
         pygame.draw.rect(scr, hantiseca["correct"], [hantiseca["x"] - 5, hantiseca["y"] - 5, hantisecarect.w + 10, hantisecarect.h + 10], 0)
@@ -205,8 +215,8 @@ def bossselect():
 
         colliderect(start, mouse, startrender)
 
-
         clock.tick(60)
+
         pygame.display.update()
 
 
@@ -220,8 +230,9 @@ def tutorial(scr):
     from fabiano import eventostuto
 
     p1 = ply(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5)
+    p1.tutorial = True
 
-    fundo = pygame.image.load("assets/intro/tuto" + linguagem + ".png").convert()
+    fundo = pygame.image.load("assets/intro/tuto" + death.linguagem + ".png").convert()
 
     voltar = {"Nome": "Voltar", "x": 10, "y": 10, "w": 100, "h": 90}
 
@@ -252,7 +263,7 @@ def lores(bosschosed):
     elif bosschosed == "Botlasso":
         bosschosed = "botlasso"
 
-    fundo = pygame.image.load("assets/" + bosschosed +"/lore" + linguagem + ".png").convert()
+    fundo = pygame.image.load("assets/" + bosschosed +"/lore" + death.linguagem + ".png").convert()
     pygame.mixer.music.load("assets/musics/" + bosschosed + ".mp3")
     pygame.mixer.music.set_volume(0.1)
     pygame.mixer.music.play(-1)
