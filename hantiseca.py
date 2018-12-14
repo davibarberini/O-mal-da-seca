@@ -11,20 +11,29 @@ def gameloop(scr, scrx, scry):
         def __init__(self):
             self.boss = Boss(scr, (255, 0, 0), [scrx - 300, scry - 550, 250, 500])
             self.p1 = ply(scr, (0, 0, 255), [scrx - (scrx - 50), scry - 330, 60, 120], 5)
-            self.fundo = pygame.image.load("assets/hantiseca/fundo.png").convert()
+            self.fundo = [pygame.image.load("assets/hantiseca/fundo.png").convert(),
+                        pygame.image.load("assets/hantiseca/fundo2.png").convert(),
+                        pygame.image.load("assets/hantiseca/fundo3.png").convert(),
+                        pygame.image.load("assets/hantiseca/fundo4.png").convert(),
+                        pygame.image.load("assets/hantiseca/fundo5.png").convert(),
+                        pygame.image.load("assets/hantiseca/fundo6.png").convert(),
+                        pygame.image.load("assets/hantiseca/fundo7.png").convert()]
+            self.fundocount = 0
+            self.fpersec = 6
+
             self.count = 0
             self.skill = 1
             self.inicio = time.time()
             pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=256)
             pygame.mixer.music.load("assets/musics/hantiseca.mp3")
-            pygame.mixer.music.set_volume(0.1)
+            pygame.mixer.music.set_volume(0.4)
             pygame.mixer.music.play(-1)
             self.rain = pygame.mixer.Sound("assets/hantiseca/rain.wav")
             self.rain.set_volume(0.3)
             self.rain.play()
 
         def update(self):
-            scr.blit(self.fundo, (0, 0))
+            scr.blit(self.fundo[self.fundocount // self.fpersec], (0, 0))
             self.draw()
             self.collisions()
             self.boss.update()
@@ -78,9 +87,12 @@ def gameloop(scr, scrx, scry):
                 tempo = self.fim - self.inicio
                 mortes[0] = True
                 import death
-                death.score(scr, self.fundo, tempo, self.p1.vida, 1)
+                death.score(scr, self.fundo[0], tempo, self.p1.vida, 1)
 
+            self.fundocount += 1
             self.count += 1
+            if self.fundocount // self.fpersec >= len(self.fundo):
+                self.fundocount = 0
 
         def collisions(self):
             p1Rect = pygame.Rect(self.p1.rect)

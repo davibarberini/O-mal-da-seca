@@ -23,7 +23,7 @@ class Cenario(object):
         self.countanim = 0
         pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=256)
         pygame.mixer.music.load("assets/musics/mckurt.mp3")
-        pygame.mixer.music.set_volume(0.1)
+        pygame.mixer.music.set_volume(0.2)
         pygame.mixer.music.play(-1)
         self.inicio = time.time()
 

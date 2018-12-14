@@ -26,7 +26,7 @@ def gameloop(tela, W, H):
             self.sentidofundo = True
             pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=256)
             pygame.mixer.music.load("assets/musics/botlasso.mp3")
-            pygame.mixer.music.set_volume(0.1)
+            pygame.mixer.music.set_volume(0.2)
             pygame.mixer.music.play(-1)
             self.zwsound = pygame.mixer.Sound("assets/botlasso/zwsound.wav")
             self.zwsound2 = pygame.mixer.Sound("assets/botlasso/zwsound2.wav")

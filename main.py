@@ -36,7 +36,7 @@ def colliderect( obj, mouse, objrender):
 def collidelanguage( obj, mouse, objrender):
     objrect = objrender.get_rect()
     if obj["x"] + objrect.w > mouse[0] > obj["x"] and obj["y"] + objrect.h > mouse[1] > obj["y"]:
-        obj["scale"] = (120, 120)
+        obj["scale"] = (100, 100)
         obj["mcolide"] = True
     else:
         obj["scale"] = (100, 100)
@@ -83,8 +83,6 @@ def bossselect():
     lehwa = {"texto": "Lehwa", "x": 430, "y": 150, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
     botlasso = {"texto": "Botlasso", "x": 730, "y": 150, "cor": (0, 0, 0),"correct": (255, 255, 0) , "mcolide": False}
     mckurt = {"texto": "McKurt", "x": 430, "y": 400, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
-    start = {"texto": "Start Game", "x": 0, "y": 470, "cor": (0, 0, 0), "correct": (255, 255, 0), "mcolide": False}
-    startrender = arial.render(start["texto"], True, start["cor"])
     ingles = {"Nome": "Voltar", "x": 860, "y": 360, "w": 100, "h": 70, "scale": (100, 100)}
     inglesimgreal = pygame.image.load("assets/intro/inglesicon.png").convert_alpha()
     portugues = {"Nome": "Voltar", "x": 860, "y": 510, "w": 100, "h": 70, "scale": (100, 100)}
@@ -93,7 +91,6 @@ def bossselect():
     botlassorect = botlassoimg.get_rect()
     lehwarect = lehwaimg.get_rect()
     mckurtrect = mckurtimg.get_rect()
-    startrect = startrender.get_rect()
     tuto = pygame.image.load("assets/intro/tutorial.png").convert_alpha()
     tutorect = tuto.get_rect()
     tutodict = {"x": 0, "y": 600, "w": tutorect.w, "h": tutorect.h}
@@ -104,6 +101,9 @@ def bossselect():
         posir = (800, 550)
     run = True
     while run:
+        startrender = pygame.image.load("assets/intro/start" + death.linguagem + ".png").convert_alpha()
+        startrect = startrender.get_rect()
+        start = {"x": 0, "y": 470, "w": startrect.w, "h": startrect.h}
         inglesimg = pygame.transform.scale(inglesimgreal, ingles["scale"])
         portuguesimg = pygame.transform.scale(portuguesimgreal, portugues["scale"])
         imgchoose = pygame.image.load("assets/intro/bosschoose" + death.linguagem + ".png").convert_alpha()
@@ -141,7 +141,7 @@ def bossselect():
                         if canmckurt:
                             bossselected = "McKurt"
                             posseta = (470, 550)
-                    elif start["mcolide"] == True:
+                    elif mousecolide(start, mouse):
                         try:
                             if bossselected == "Hantiseca":
                                 img = pygame.image.load("assets/hantiseca/lore" + death.linguagem + ".png").convert()
@@ -196,7 +196,6 @@ def bossselect():
         pygame.draw.rect(scr, botlasso["correct"], [botlasso["x"] - 5, botlasso["y"] - 5, botlassorect.w + 10, botlassorect.h + 10], 0)
         if canmckurt:
             pygame.draw.rect(scr, mckurt["correct"], [mckurt["x"] - 5, mckurt["y"] - 5, mckurtrect.w + 10, mckurtrect.h + 10], 0)
-        pygame.draw.rect(scr, start["correct"], [start["x"], start["y"], startrect.w, startrect.h], 0)
         scr.blit(hantisecaimg, (hantiseca["x"], hantiseca["y"]))
         scr.blit(lehwaimg, (lehwa["x"], lehwa["y"]))
         scr.blit(botlassoimg, (botlasso["x"], botlasso["y"]))
@@ -256,16 +255,19 @@ def tutorial(scr):
 def lores(bosschosed):
     if bosschosed == "Lehwa":
         bosschosed = "baleia"
+        pygame.mixer.music.set_volume(0.3)
     elif bosschosed == "Hantiseca":
         bosschosed = "hantiseca"
+        pygame.mixer.music.set_volume(0.4)
     elif bosschosed == "McKurt":
         bosschosed = "mckurt"
+        pygame.mixer.music.set_volume(0.2)
     elif bosschosed == "Botlasso":
+        pygame.mixer.music.set_volume(0.2)
         bosschosed = "botlasso"
 
     fundo = pygame.image.load("assets/" + bosschosed +"/lore" + death.linguagem + ".png").convert()
     pygame.mixer.music.load("assets/musics/" + bosschosed + ".mp3")
-    pygame.mixer.music.set_volume(0.1)
     pygame.mixer.music.play(-1)
 
     ir = {"Nome": "Voltar", "x": 800, "y": 30, "w": 100, "h": 90}
